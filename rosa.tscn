@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://by532pnfop3im"]
+
+[ext_resource type="Script" path="res://rosa.gd" id="1_ers3u"]
+[ext_resource type="Texture2D" uid="uid://c3mvc4fbrbwii" path="res://icon.svg" id="1_ot66q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nr8wf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ot66q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cidi"]
+
+[node name="Rosa" type="Node2D"]
+script = ExtResource("1_ers3u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nr8wf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_3cidi")
