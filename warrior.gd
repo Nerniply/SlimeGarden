@@ -1,14 +1,16 @@
 extends CharacterBody2D
+class_name Enemy
+
+const spd = 7
+const hp = 1
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 
-
-
+func warriorcollide(warriorHitbox):
+	self.queue_free()
 
 func _physics_process(delta):
 	var target = get_parent().get_node("Rosa")
-	position += (target.position - position).normalized() * 2
-
+	position += (target.position - position).normalized() * spd
 	move_and_slide()
+
