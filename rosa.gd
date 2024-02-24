@@ -1,4 +1,5 @@
 extends Node2D
+class_name Player
 
 var maxhp = 25
 var curhp = 25
@@ -14,15 +15,17 @@ func SetMaxHP(newhp):
 	maxhp = newhp
 
 func drophp(amount):
-	add_child(load("res://health.tscn").instance())
+	for i in range(amount):
+		get_parent().add_child(load("res://health.tscn").instantiate())
 
-func warriorcollide(warriorHitbox):
-	var warriorhp = get_parent().get_node("Warrior").get_variable("hp")
-	if (warriorhp < curhp):
-		curhp -= warriorhp
-		drophp(warriorhp)
-	else:
-		get_tree().reload_current_scene()
+func collide(area: Area2D):
+	if (area.get_parent() is Enemy):
+		var enemyhp = area.get_parent().gethp()
+		if (enemyhp < curhp):
+			curhp -= enemyhp
+			drophp(enemyhp)
+		else:
+			get_tree().reload_current_scene()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

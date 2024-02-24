@@ -2,12 +2,15 @@ extends CharacterBody2D
 class_name Enemy
 
 const spd = 7
-const hp = 1
+const hp = 4
 
+func gethp():
+	return hp
 
-
-func warriorcollide(warriorHitbox):
-	self.queue_free()
+func playercollide(area: Area2D):
+	if (area.get_parent() is Player):
+		print("collide")
+		queue_free()
 
 func _physics_process(delta):
 	var target = get_parent().get_node("Rosa")

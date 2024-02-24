@@ -28,3 +28,5 @@ sprite_frames = SubResource("SpriteFrames_nr8wf")
 shape = SubResource("CapsuleShape2D_3cidi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="collide"]
