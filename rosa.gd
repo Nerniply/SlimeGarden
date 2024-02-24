@@ -14,18 +14,26 @@ func _physics_process(delta):
 func SetMaxHP(newhp):
 	maxhp = newhp
 
+func gethp():
+	return curhp
+
+# Controlls the dropping of health when taking damage
 func drophp(amount):
 	for i in range(amount):
 		get_parent().add_child(load("res://health.tscn").instantiate())
 
 func collide(area: Area2D):
-	if (area.get_parent() is Enemy):
+	if (area.get_parent() is Warrior or area.get_parent() is Pyro):
 		var enemyhp = area.get_parent().gethp()
 		if (enemyhp < curhp):
 			curhp -= enemyhp
+			print(curhp)
 			drophp(enemyhp)
 		else:
 			get_tree().reload_current_scene()
+	if (area.get_parent() is Health):
+		curhp += 1
+		print(curhp)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

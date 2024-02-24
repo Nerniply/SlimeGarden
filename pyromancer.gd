@@ -1,7 +1,7 @@
 extends CharacterBody2D
-class_name Warrior
+class_name Pyro
 
-const spd = 7
+const spd = 5
 const hp = 1
 
 func gethp():
