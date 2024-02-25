@@ -18,7 +18,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_busml"]
 
-[node name="Warrior" type="CharacterBody2D"]
+[node name="Warrior" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_lnviq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

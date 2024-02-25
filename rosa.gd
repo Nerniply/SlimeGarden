@@ -23,7 +23,7 @@ func drophp(amount):
 		get_parent().add_child(load("res://health.tscn").instantiate())
 
 func collide(area: Area2D):
-	if (area.get_parent() is Warrior or area.get_parent() is Pyro):
+	if (area.get_parent().is_in_group("Enemy")):
 		var enemyhp = area.get_parent().gethp()
 		if (enemyhp < curhp):
 			curhp -= enemyhp
