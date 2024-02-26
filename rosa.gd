@@ -3,7 +3,7 @@ class_name Player
 
 var maxhp = 25
 var curhp = 25
-var spd = 10
+var spd = 5
 var direction = "X"
 
 func _physics_process(delta):
