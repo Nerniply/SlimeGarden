@@ -18,6 +18,6 @@ func _physics_process(delta):
 	if relativeposition.x > 0:
 		$AnimatedSprite2D.play("move_R")
 	else: $AnimatedSprite2D.play("move_L")
-	position += (relativeposition).normalized() * spd
-	move_and_slide()
+	#position += (relativeposition).normalized() * spd
+	#move_and_slide()
 

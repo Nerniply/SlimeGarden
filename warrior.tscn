@@ -81,11 +81,8 @@ animations = [{
 script = ExtResource("1_lnviq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.460938, 0.460938)
 sprite_frames = SubResource("SpriteFrames_0apwg")
-animation = &"move_R"
-frame = 2
-frame_progress = 0.0790922
+animation = &"move_L"
 
 [node name="Area2D" type="Area2D" parent="."]
 
