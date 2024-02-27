@@ -48,17 +48,18 @@ func drophp(amount):
 
 # Controls collisions with various objects
 func collide(area: Area2D):
-	if (area.get_parent().is_in_group("Enemy")):
-		var enemyhp = area.get_parent().gethp()
-		if (enemyhp < curhp):
-			curhp -= enemyhp
+	if area.is_in_group("Hitbox"):
+		if (area.get_parent().is_in_group("Enemy")):
+			var enemyhp = area.get_parent().gethp()
+			if (enemyhp < curhp):
+				curhp -= enemyhp
+				print(curhp)
+				drophp(enemyhp)
+			else:
+				get_tree().reload_current_scene()
+		if (area.get_parent() is Health):
+			curhp += 1
 			print(curhp)
-			drophp(enemyhp)
-		else:
-			get_tree().reload_current_scene()
-	if (area.get_parent() is Health):
-		curhp += 1
-		print(curhp)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

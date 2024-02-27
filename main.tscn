@@ -13,7 +13,7 @@ format = 2
 position = Vector2(320, 180)
 
 [node name="Warrior" parent="." instance=ExtResource("2_ejm3v")]
-position = Vector2(192, 128)
+position = Vector2(512, 192)
 
 [node name="Pyromancer" parent="." instance=ExtResource("3_olf6d")]
-position = Vector2(216, 128)
+position = Vector2(0, 192)
