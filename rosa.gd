@@ -3,7 +3,7 @@ class_name Player
 
 var maxhp = 25
 var curhp = 25
-var spd = 5
+var spd = 3
 var direction = "X"
 
 func _physics_process(delta):
@@ -46,6 +46,7 @@ func drophp(amount):
 	for i in range(amount):
 		get_parent().add_child(load("res://health.tscn").instantiate())
 
+# Controls collisions with various objects
 func collide(area: Area2D):
 	if (area.get_parent().is_in_group("Enemy")):
 		var enemyhp = area.get_parent().gethp()

@@ -1,10 +1,15 @@
 extends CharacterBody2D
 
-const spd = 5
+const spd = 1.5
 const hp = 1
 
 func gethp():
 	return hp
+
+enum states {
+	MOVING,
+	CASTING
+}
 
 func playercollide(area: Area2D):
 	if (area.get_parent() is Player):
@@ -14,6 +19,10 @@ func playercollide(area: Area2D):
 
 func _physics_process(delta):
 	var target = get_parent().get_node("Rosa")
-	position += (target.position - position).normalized() * spd
-	move_and_slide()
+	var relativeposition = target.position - position
+	if relativeposition.x > 0:
+		$AnimatedSprite2D.play("move_R")
+	else: $AnimatedSprite2D.play("move_L")
+	#position += (target.position - position).normalized() * spd
+	#move_and_slide()
 

@@ -73,9 +73,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gu6w4"]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_56e3c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gu6w4"]
 
 [node name="Warrior" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_lnviq")
@@ -84,14 +84,14 @@ script = ExtResource("1_lnviq")
 sprite_frames = SubResource("SpriteFrames_0apwg")
 animation = &"move_L"
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(0.3, 0.3)
-shape = SubResource("CapsuleShape2D_gu6w4")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.6, 0.6)
 shape = SubResource("CapsuleShape2D_56e3c")
 
-[connection signal="area_entered" from="Area2D" to="." method="playercollide"]
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("CapsuleShape2D_gu6w4")
+
+[connection signal="area_entered" from="hitbox" to="." method="playercollide"]
