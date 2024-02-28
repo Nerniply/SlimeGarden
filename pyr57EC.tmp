@@ -1,12 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://bfjdojxfhd73s"]
+[gd_scene load_steps=32 format=3 uid="uid://bfjdojxfhd73s"]
 
 [ext_resource type="Script" path="res://pyromancer.gd" id="1_0b4vd"]
 [ext_resource type="Texture2D" uid="uid://cf124kyjwgo32" path="res://Assets/Enemies/Slime Garden Pixel Arts-Casting.png" id="2_3ghla"]
 [ext_resource type="Texture2D" uid="uid://k7w4vs1qts1i" path="res://Assets/Enemies/Slime Garden Pixel Arts-Pyro Move.png" id="2_811ft"]
 [ext_resource type="Texture2D" uid="uid://dwo8gy05ws6j6" path="res://Assets/Enemies/Slime Garden Pixel Arts-Pyro Move R.png" id="3_5amw7"]
 [ext_resource type="Texture2D" uid="uid://cqv1uo5jonwlw" path="res://Assets/Enemies/Slime Garden Pixel Arts-Casting R.png" id="3_k5u3c"]
-[ext_resource type="Texture2D" uid="uid://dukfq2jy7p2nm" path="res://Assets/Enemies/Slime Garden Pixel Arts-Pyro Idle.png" id="4_b8o8b"]
-[ext_resource type="Texture2D" uid="uid://gew3olih2egw" path="res://Assets/Enemies/Slime Garden Pixel Arts-Pyro Idle R.png" id="5_pq736"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8mty"]
 atlas = ExtResource("2_3ghla")
@@ -62,22 +60,6 @@ region = Rect2(50, 0, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hu4ys"]
 atlas = ExtResource("3_k5u3c")
-region = Rect2(0, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s47e7"]
-atlas = ExtResource("4_b8o8b")
-region = Rect2(0, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ck5p"]
-atlas = ExtResource("4_b8o8b")
-region = Rect2(50, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wscdx"]
-atlas = ExtResource("5_pq736")
-region = Rect2(50, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gsp1k"]
-atlas = ExtResource("5_pq736")
 region = Rect2(0, 0, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xkka7"]
@@ -168,28 +150,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s47e7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ck5p")
-}],
-"loop": true,
-"name": &"idle_L",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wscdx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gsp1k")
-}],
-"loop": true,
-"name": &"idle_R",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_xkka7")
 }, {
 "duration": 1.0,
@@ -253,6 +213,7 @@ shape = SubResource("CapsuleShape2D_1fgym")
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_w3elk")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="animtrigger"]
 [connection signal="area_entered" from="hitbox" to="." method="playercollide"]
 [connection signal="area_entered" from="detectionrange" to="." method="startCasting"]
 [connection signal="area_exited" from="detectionrange" to="." method="startMoving"]

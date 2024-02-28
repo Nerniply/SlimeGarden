@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://csmj3pq3yqc4r"]
+
+[ext_resource type="PackedScene" uid="uid://by532pnfop3im" path="res://rosa.tscn" id="1_86t2s"]
+[ext_resource type="PackedScene" uid="uid://cfcko03l7hkgk" path="res://warrior.tscn" id="2_ejm3v"]
+[ext_resource type="PackedScene" uid="uid://bfjdojxfhd73s" path="res://pyromancer.tscn" id="3_olf6d"]
+
+[node name="Main" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="Rosa" parent="." instance=ExtResource("1_86t2s")]
+position = Vector2(320, 180)
+
+[node name="Warrior" parent="." instance=ExtResource("2_ejm3v")]
+position = Vector2(512, 192)
+
+[node name="Pyromancer" parent="." instance=ExtResource("3_olf6d")]
+position = Vector2(0, 192)
