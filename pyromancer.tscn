@@ -235,7 +235,7 @@ script = ExtResource("1_0b4vd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3.8147e-06, 3.8147e-06)
 sprite_frames = SubResource("SpriteFrames_nvkc1")
-animation = &"cast_L"
+animation = &"cast_R"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.6, 0.6)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4o7pucun2ax4"]
+
+[ext_resource type="Script" path="res://fireball_indicator.gd" id="1_3i2ya"]
+[ext_resource type="Texture2D" uid="uid://c3mvc4fbrbwii" path="res://icon.svg" id="2_qpc1v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tspq3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qpc1v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_renxg"]
+
+[node name="FireballIndicator" type="Node2D"]
+script = ExtResource("1_3i2ya")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -6
+sprite_frames = SubResource("SpriteFrames_tspq3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_renxg")
