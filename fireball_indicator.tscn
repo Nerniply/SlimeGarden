@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4o7pucun2ax4"]
+[gd_scene load_steps=6 format=3 uid="uid://b4o7pucun2ax4"]
 
 [ext_resource type="Script" path="res://fireball_indicator.gd" id="1_3i2ya"]
 [ext_resource type="Texture2D" uid="uid://c3mvc4fbrbwii" path="res://icon.svg" id="2_qpc1v"]
@@ -16,6 +16,8 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_renxg"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2y7hg"]
+
 [node name="FireballIndicator" type="Node2D"]
 script = ExtResource("1_3i2ya")
 
@@ -23,7 +25,18 @@ script = ExtResource("1_3i2ya")
 z_index = -6
 sprite_frames = SubResource("SpriteFrames_tspq3")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]
+scale = Vector2(0.5, 0.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_renxg")
+
+[node name="ExplosionRange" type="Area2D" parent="." groups=["Explosion"]]
+scale = Vector2(2.5, 2.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRange"]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_2y7hg")
+
+[connection signal="area_entered" from="ExplosionRange" to="." method="playerEntered"]
+[connection signal="area_exited" from="ExplosionRange" to="." method="playerExited"]

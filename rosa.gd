@@ -60,6 +60,15 @@ func collide(area: Area2D):
 		if (area.get_parent() is Health):
 			curhp += 1
 			print(curhp)
+	if area.is_in_group("Explosion"):
+		var enemyhp = area.get_parent().gethp()
+		if (enemyhp < curhp):
+			curhp -= enemyhp
+			print(curhp)
+			drophp(enemyhp)
+		else:
+			get_tree().reload_current_scene()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
