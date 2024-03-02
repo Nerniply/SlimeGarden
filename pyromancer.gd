@@ -2,12 +2,12 @@ extends CharacterBody2D
 
 const spd = 1.5
 const hp = 1
-var inRange = false
-var timervar = 1
+var inRange = false # determines if player is close enough to shoot at
+var timervar = 1 # keps track of frames and allows state timing
 var currState: int = pyro.MOVE
 signal stateChanged(newState)
-var targetPosition
-var readyToShoot
+var targetPosition # updates during TARGET state but not CAST state; allows fireballs to be dodgeable
+var readyToShoot # true when fireball done charging and ready to fire
 
 enum pyro {
 	MOVE,
@@ -31,6 +31,7 @@ func getTarget():
 func getShoot():
 	return readyToShoot
 
+# triggered by player entering detection range
 func startCasting(area: Area2D) -> void:
 	if (area.get_parent() is Player):
 		if currState == pyro.MOVE:
@@ -38,6 +39,7 @@ func startCasting(area: Area2D) -> void:
 			setState(pyro.TARGET)
 		inRange = true
 
+# triggered by player exiting detection range
 func startMoving(area: Area2D) -> void:
 	if (area.get_parent() is Player):
 		inRange = false
@@ -49,7 +51,7 @@ func playercollide(area: Area2D):
 		if (hp < playerhp):
 			queue_free()
 
-# spawns a new fireball
+# spawns a new fireball and targeting circle
 func spawnfireball():
 	add_child(load("res://fireball.tscn").instantiate())
 	add_child(load("res://fireball_indicator.tscn").instantiate())
@@ -88,7 +90,7 @@ func _process(delta):
 				$AnimatedSprite2D.play("cast_R")
 			else: $AnimatedSprite2D.play("cast_L")
 			if $AnimatedSprite2D.get_frame() == 6 and $AnimatedSprite2D.get_frame_progress() > 0.92: # on the next frame the animation will loop
-				# print("changing state: COOLDOWN")
+				#print("changing state: COOLDOWN")
 				setState(pyro.COOLDOWN)
 		pyro.COOLDOWN:
 			if relativeposition.x > 0:

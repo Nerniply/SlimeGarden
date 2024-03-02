@@ -29,11 +29,7 @@ func _physics_process(delta):
 	if !Input.is_key_pressed(KEY_D) and !Input.is_key_pressed(KEY_A) and !Input.is_key_pressed(KEY_S) and !Input.is_key_pressed(KEY_W):
 		$AnimatedSprite2D.play("idle")
 	position += input.normalized()*spd
-	
-	#var move = Vector2()
-	#move.x = spd*(int(Input.is_key_pressed(KEY_D)) - int(Input.is_key_pressed(KEY_A)))
-	#move.y = spd*(int(Input.is_key_pressed(KEY_S)) - int(Input.is_key_pressed(KEY_W)))
-	#position += move
+
 
 func SetMaxHP(newhp):
 	maxhp = newhp

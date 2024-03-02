@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://b4o7pucun2ax4"]
 
 [ext_resource type="Script" path="res://fireball_indicator.gd" id="1_3i2ya"]
-[ext_resource type="Texture2D" uid="uid://c3mvc4fbrbwii" path="res://icon.svg" id="2_qpc1v"]
+[ext_resource type="Texture2D" uid="uid://deq6tjiis2obl" path="res://Assets/Enemies/Warning.png" id="2_h1shj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tspq3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qpc1v")
+"texture": ExtResource("2_h1shj")
 }],
 "loop": true,
 "name": &"default",
@@ -23,6 +23,7 @@ script = ExtResource("1_3i2ya")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -6
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_tspq3")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]
@@ -38,5 +39,6 @@ scale = Vector2(2.5, 2.5)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("CircleShape2D_2y7hg")
 
+[connection signal="area_entered" from="Hitbox" to="." method="explode"]
 [connection signal="area_entered" from="ExplosionRange" to="." method="playerEntered"]
 [connection signal="area_exited" from="ExplosionRange" to="." method="playerExited"]

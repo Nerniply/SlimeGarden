@@ -115,7 +115,6 @@ script = ExtResource("1_ers3u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nr8wf")
 animation = &"idle"
-frame_progress = 0.110902
 
 [node name="hitbox" type="Area2D" parent="." groups=["Hitbox"]]
 

@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://edvvxy2r8buk"]
+
+[ext_resource type="Texture2D" uid="uid://c3mvc4fbrbwii" path="res://icon.svg" id="1_1dyvi"]
+[ext_resource type="Script" path="res://knight.gd" id="1_63f1y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kohiq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1dyvi")
+}],
+"loop": true,
+"name": &"charge_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1dyvi")
+}],
+"loop": true,
+"name": &"charge_R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1dyvi")
+}],
+"loop": true,
+"name": &"move_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1dyvi")
+}],
+"loop": true,
+"name": &"move_R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1dyvi")
+}],
+"loop": true,
+"name": &"stun_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1dyvi")
+}],
+"loop": true,
+"name": &"stun_R",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yhp6g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d4uoa"]
+
+[node name="Knight" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_63f1y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kohiq")
+animation = &"stun_R"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_yhp6g")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_d4uoa")
