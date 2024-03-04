@@ -16,4 +16,4 @@ position = Vector2(320, 180)
 position = Vector2(512, 192)
 
 [node name="Pyromancer" parent="." instance=ExtResource("3_olf6d")]
-position = Vector2(0, 192)
+position = Vector2(16, 192)

@@ -14,8 +14,10 @@ func _ready():
 func collide(area: Area2D):
 	if area.is_in_group("Hitbox"):
 		if area.get_parent() is Player or area.get_parent().get_parent() == self.get_parent():
+			$Sprite2D.visible = true
 			queue_free()
 			get_parent().get_node("FireballIndicator").canDespawn = true
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
