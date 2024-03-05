@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-const spd = 2.1
+const spd = 140
 const hp = 1
+var direction = "X"
 
 func gethp():
 	return hp
@@ -15,9 +16,15 @@ func playercollide(area: Area2D):
 func _physics_process(delta):
 	var target = get_parent().get_node("Rosa")
 	var relativeposition = target.position - position
+	velocity = position.direction_to(target.position) * spd
 	if relativeposition.x > 0:
-		$AnimatedSprite2D.play("move_R")
-	else: $AnimatedSprite2D.play("move_L")
-	position += (relativeposition).normalized() * spd
+		direction = "R"
+	if relativeposition.x < 0:
+		direction = "L"
 	move_and_slide()
 
+func _process(delta):
+	if direction == "R":
+		$AnimatedSprite2D.play("move_R")
+	if direction == "L":
+		$AnimatedSprite2D.play("move_L")

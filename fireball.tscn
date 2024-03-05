@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3rwrttojy6rw"]
+[gd_scene load_steps=7 format=3 uid="uid://d3rwrttojy6rw"]
 
 [ext_resource type="Script" path="res://fireball.gd" id="1_ripfh"]
 [ext_resource type="Texture2D" uid="uid://c63w2g6772wwt" path="res://Assets/Enemies/Fireball.png" id="2_3kobo"]
-[ext_resource type="Texture2D" uid="uid://brn3olr4wwwxv" path="res://Assets/Enemies/Explosion.png" id="3_jcq4m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q7pvc"]
 animations = [{
@@ -47,11 +46,7 @@ scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_xx7vj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1e-05, 1e-05)
 shape = SubResource("CircleShape2D_j55nd")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("3_jcq4m")
 
 [connection signal="area_entered" from="Hitbox" to="." method="collide"]

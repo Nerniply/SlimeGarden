@@ -244,7 +244,7 @@ shape = SubResource("CapsuleShape2D_4j38q")
 [node name="hitbox" type="Area2D" parent="." groups=["Hitbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.7, 0.7)
 shape = SubResource("CapsuleShape2D_1fgym")
 
 [node name="detectionrange" type="Area2D" parent="."]

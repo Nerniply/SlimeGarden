@@ -1,12 +1,15 @@
-extends Node2D
+extends Sprite2D
 
-func spawnExplosions(center: Vector2, size: int):
-	pass
+var timervar = 0
+var size
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	self.scale = Vector2(size, size)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	timervar += 1
+	if timervar == 10:
+		queue_free()
