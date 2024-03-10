@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const spd = 1.5
+const spd = 100
 const hp = 1
 var inRange = false # determines if player is close enough to shoot at
 var timervar = 1 # keps track of frames and allows state timing
@@ -60,7 +60,8 @@ func _physics_process(delta):
 	var target = get_parent().get_node("Rosa")
 	var relativeposition = target.position - position
 	if currState == pyro.MOVE:
-		position += (target.position - position).normalized() * spd
+		#position += (target.position - position).normalized() * spd
+		velocity = position.direction_to(target.position) * spd
 		move_and_slide()
 
 func _process(delta):

@@ -111,13 +111,13 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_54r4g"]
 
-[node name="Rosa" type="CharacterBody2D" groups=["Player"]]
+[node name="Rosa" type="CharacterBody2D" groups=["Player", "Solid"]]
 script = ExtResource("1_ers3u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3sr7h")
 animation = &"idle"
-frame_progress = 0.217634
+frame_progress = 0.85528
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

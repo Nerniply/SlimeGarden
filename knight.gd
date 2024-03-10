@@ -6,7 +6,7 @@ var isCharging: bool
 var timervar = 0
 var currState: int = knight.WINDUP
 signal stateChanged(newState)
-var targetPosition #only updates during move
+var targetPosition #only updates during windup
 
 enum knight {
 	WINDUP,

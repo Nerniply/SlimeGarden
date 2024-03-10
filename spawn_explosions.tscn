@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://7retenv6236o"]
-
-[ext_resource type="Script" path="res://spawn_explosions.gd" id="1_q5p0y"]
-
-[node name="SpawnExplosions" type="Node2D"]
-script = ExtResource("1_q5p0y")

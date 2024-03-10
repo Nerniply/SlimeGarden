@@ -2,6 +2,10 @@ extends Sprite2D
 
 var timervar = 0
 var size
+var hp = 1
+
+func gethp():
+	return hp
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://28wyjufjw4rk"]
+
+[ext_resource type="Script" path="res://archer.gd" id="1_7s73p"]
+[ext_resource type="Texture2D" uid="uid://1sx1xletb4c4" path="res://Assets/nerncake.png" id="1_bkwot"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0bl7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bkwot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2kir3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_igh4x"]
+
+[node name="Archer" type="CharacterBody2D"]
+script = ExtResource("1_7s73p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p0bl7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_2kir3")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+shape = SubResource("CapsuleShape2D_igh4x")
+
+[node name="detectionrange" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="detectionrange"]
+polygon = PackedVector2Array(8, -8, 256, -256, 256, 256, 8, 8, -8, 8, -256, 256, -256, -256, -8, -8)

@@ -1,13 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://edvvxy2r8buk"]
+[gd_scene load_steps=16 format=3 uid="uid://edvvxy2r8buk"]
 
 [ext_resource type="Texture2D" uid="uid://c3mvc4fbrbwii" path="res://icon.svg" id="1_1dyvi"]
 [ext_resource type="Script" path="res://knight.gd" id="1_63f1y"]
+[ext_resource type="Texture2D" uid="uid://v4st03eqd0kk" path="res://Assets/Enemies/Slime Garden Pixel Arts-BK Attack.png" id="2_cn2bg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jciop"]
+atlas = ExtResource("2_cn2bg")
+region = Rect2(5120, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb1wk"]
+atlas = ExtResource("2_cn2bg")
+region = Rect2(0, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf8q7"]
+atlas = ExtResource("2_cn2bg")
+region = Rect2(640, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc0jx"]
+atlas = ExtResource("2_cn2bg")
+region = Rect2(1280, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uac37"]
+atlas = ExtResource("2_cn2bg")
+region = Rect2(1920, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfr84"]
+atlas = ExtResource("2_cn2bg")
+region = Rect2(2560, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6203q"]
+atlas = ExtResource("2_cn2bg")
+region = Rect2(3200, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk1ku"]
+atlas = ExtResource("2_cn2bg")
+region = Rect2(3840, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwfpe"]
+atlas = ExtResource("2_cn2bg")
+region = Rect2(4480, 0, 640, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kohiq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_1dyvi")
+"texture": SubResource("AtlasTexture_jciop")
 }],
 "loop": true,
 "name": &"charge_L",
@@ -26,22 +63,6 @@ animations = [{
 "texture": ExtResource("1_1dyvi")
 }],
 "loop": true,
-"name": &"move_L",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_1dyvi")
-}],
-"loop": true,
-"name": &"move_R",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_1dyvi")
-}],
-"loop": true,
 "name": &"stun_L",
 "speed": 5.0
 }, {
@@ -51,6 +72,43 @@ animations = [{
 }],
 "loop": true,
 "name": &"stun_R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb1wk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf8q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc0jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uac37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfr84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6203q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk1ku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwfpe")
+}],
+"loop": true,
+"name": &"windup_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1dyvi")
+}],
+"loop": true,
+"name": &"windup_R",
 "speed": 5.0
 }]
 
@@ -63,7 +121,8 @@ script = ExtResource("1_63f1y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kohiq")
-animation = &"stun_R"
+animation = &"windup_L"
+frame_progress = 0.439607
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_yhp6g")
