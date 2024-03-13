@@ -1,23 +1,55 @@
 extends CharacterBody2D
 
+@onready var target = get_parent().get_node("Rosa")
 var hp = 1
 var spd = 220
+var timervar = 1 # keps track of frames and allows state timing
+signal stateChanged(newState)
+var input = Vector2()
+var currState: int = archer.MOVE
+var inRange = false
+
+enum archer {
+	MOVE,
+	SHOOT
+}
+
+func gethp():
+	return hp
+
+# triggered by player entering detection range
+func startShooting(area: Area2D) -> void:
+	if (area.get_parent() is Player):
+		inRange = true
+
+# triggered by player exiting detection range
+func startMoving(area: Area2D) -> void:
+	if (area.get_parent() is Player):
+		inRange = false
+
+func playercollide(area: Area2D):
+	if (area.get_parent() is Player):
+		if (hp < area.get_parent().gethp()):
+			queue_free()
+
+func setState(newState: int):
+	if newState == currState:
+		return
+	currState = newState
+	emit_signal("stateChanged", currState)
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	if currState == archer.MOVE:
+		velocity = position.direction_to(target.position) * spd
+		move_and_slide()
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
+func _process(delta):
+	input = Vector2()
+	match currState:
+		archer.MOVE:
+			if inRange:
+				setState(archer.SHOOT)
+		archer.SHOOT:
+			if !inRange:
+				setState(archer.MOVE)
+	

@@ -1,20 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3rwrttojy6rw"]
+[gd_scene load_steps=5 format=3 uid="uid://bol46k1icbo1"]
 
 [ext_resource type="Script" path="res://fireball.gd" id="1_ripfh"]
 [ext_resource type="Texture2D" uid="uid://c63w2g6772wwt" path="res://Assets/Enemies/Fireball.png" id="2_3kobo"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_q7pvc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_3kobo")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_78cml"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wasek"]
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 15.0
@@ -25,28 +14,22 @@ color = Color(1, 0.733333, 0.0823529, 1)
 hue_variation_min = -0.1
 hue_variation_max = 0.1
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xx7vj"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7af1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j55nd"]
-
-[node name="Fireball" type="CharacterBody2D"]
+[node name="Fireball" type="Node2D"]
 script = ExtResource("1_ripfh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_q7pvc")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3kobo")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
 amount = 80
-process_material = SubResource("ParticleProcessMaterial_78cml")
+process_material = SubResource("ParticleProcessMaterial_wasek")
 
-[node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]
+[node name="Area2D" type="Area2D" parent="." groups=["Hitbox"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-scale = Vector2(1.5, 1.5)
-shape = SubResource("CircleShape2D_xx7vj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("CircleShape2D_w7af1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1e-05, 1e-05)
-shape = SubResource("CircleShape2D_j55nd")
-
-[connection signal="area_entered" from="Hitbox" to="." method="collide"]
+[connection signal="area_entered" from="Area2D" to="." method="collide"]

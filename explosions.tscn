@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6cccv8imf8w3"]
+
+[ext_resource type="Texture2D" uid="uid://jdle83jlr4p5" path="res://Assets/Enemies/Explosion2.png" id="1_b00au"]
+[ext_resource type="Texture2D" uid="uid://y0xi5s3u603k" path="res://Assets/Enemies/Warning2.png" id="2_ku66s"]
+[ext_resource type="Script" path="res://explosions.gd" id="3_5cdx1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvpt2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b00au")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ku66s")
+}],
+"loop": true,
+"name": &"warning",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_omu8v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j1c4e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_02igr"]
+
+[node name="Explosions" type="AnimatedSprite2D" groups=["Enemy"]]
+sprite_frames = SubResource("SpriteFrames_lvpt2")
+animation = &"warning"
+script = ExtResource("3_5cdx1")
+
+[node name="Boom1" type="Area2D" parent="." groups=["Hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boom1"]
+position = Vector2(30, -18)
+shape = SubResource("CircleShape2D_omu8v")
+disabled = true
+
+[node name="Boom2" type="Area2D" parent="." groups=["Hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boom2"]
+position = Vector2(-30, -18)
+shape = SubResource("CircleShape2D_j1c4e")
+disabled = true
+
+[node name="Boom3" type="Area2D" parent="." groups=["Hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boom3"]
+position = Vector2(0, 35)
+shape = SubResource("CircleShape2D_02igr")
+disabled = true

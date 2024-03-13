@@ -3,6 +3,7 @@ extends Sprite2D
 var timervar = 0
 var size
 var hp = 1
+var explosions = preload("res://explosions.tscn").instantiate()
 
 func gethp():
 	return hp
@@ -14,6 +15,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	timervar += 1
-	if timervar == 10:
+	if timervar == 0:
+		explosions.position = self.position
+		explosions.size = self.size
+		get_parent().add_child(explosions)
+	elif timervar == 10:
 		queue_free()
+	timervar += 1

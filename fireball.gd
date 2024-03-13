@@ -1,6 +1,6 @@
-extends CharacterBody2D
+extends Node2D
 
-var spd = 200
+var spd = 3 # = 200 on CharacterBody2D nodes
 var explosion = preload("res://explosion.tscn").instantiate()
 
 
@@ -29,7 +29,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if get_parent().getShoot():
-		velocity = position.direction_to(get_parent().getTarget()) * spd
-		#position += (get_parent().getTarget() + Vector2(0, 30)).normalized() * spd
-		move_and_slide()
+		position += (get_parent().getTarget() + Vector2(0, 30)).normalized() * spd
+		#velocity = position.direction_to(get_parent().getTarget()) * spd
+		#move_and_slide()
 
