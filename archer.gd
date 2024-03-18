@@ -5,12 +5,13 @@ var hp = 1
 var spd = 220
 var timervar = 1 # keps track of frames and allows state timing
 signal stateChanged(newState)
-var input = Vector2()
 var currState: int = archer.MOVE
 var inRange = false
+var relativeposition = Vector2()
 
 enum archer {
 	MOVE,
+	AIM,
 	SHOOT
 }
 
@@ -38,17 +39,29 @@ func setState(newState: int):
 	currState = newState
 	emit_signal("stateChanged", currState)
 
+func spawnArrow():
+	add_child(load("res://arrow.tscn").instantiate())
+
 func _physics_process(delta):
-	if currState == archer.MOVE:
-		velocity = position.direction_to(target.position) * spd
-		move_and_slide()
+	if self.currState == archer.MOVE:
+		self.velocity = position.direction_to(target.position) * spd
+	move_and_slide()
 
 func _process(delta):
-	input = Vector2()
+	relativeposition = target.position - position
 	match currState:
 		archer.MOVE:
+			if relativeposition.x > 0:
+				$AnimatedSprite2D.flip_h = true
+				$AnimatedSprite2D.play("move_L")
+			else:
+				$AnimatedSprite2D.flip_h = false
+				$AnimatedSprite2D.play("move_L")
 			if inRange:
-				setState(archer.SHOOT)
+				setState(archer.AIM)
+		archer.AIM:
+			if timervar == 0:
+				spawnArrow()
 		archer.SHOOT:
 			if !inRange:
 				setState(archer.MOVE)

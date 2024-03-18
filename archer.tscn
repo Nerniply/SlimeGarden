@@ -1,16 +1,16 @@
 [gd_scene load_steps=7 format=3 uid="uid://28wyjufjw4rk"]
 
 [ext_resource type="Script" path="res://archer.gd" id="1_7s73p"]
-[ext_resource type="Texture2D" uid="uid://1sx1xletb4c4" path="res://Assets/nerncake.png" id="1_bkwot"]
+[ext_resource type="Texture2D" uid="uid://c3mvc4fbrbwii" path="res://icon.svg" id="2_emriu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p0bl7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_bkwot")
+"texture": ExtResource("2_emriu")
 }],
 "loop": true,
-"name": &"default",
+"name": &"move_L",
 "speed": 5.0
 }]
 
@@ -25,6 +25,7 @@ script = ExtResource("1_7s73p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p0bl7")
+animation = &"move_L"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_2kir3")
@@ -37,7 +38,7 @@ shape = SubResource("CapsuleShape2D_igh4x")
 [node name="detectionrange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionrange"]
-scale = Vector2(40, 40)
+scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_sxvgc")
 
 [connection signal="area_entered" from="Hitbox" to="." method="playercollide"]

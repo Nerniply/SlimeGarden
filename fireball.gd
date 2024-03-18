@@ -1,6 +1,6 @@
 extends Node2D
 
-var spd = 3 # = 200 on CharacterBody2D nodes
+var spd = 4 # = 200 on CharacterBody2D nodes
 var explosion = preload("res://explosion.tscn").instantiate()
 
 

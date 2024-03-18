@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://csmj3pq3yqc4r"]
+[gd_scene load_steps=6 format=3 uid="uid://csmj3pq3yqc4r"]
 
 [ext_resource type="PackedScene" uid="uid://dcsmkol37yt11" path="res://rosa.tscn" id="1_86t2s"]
 [ext_resource type="PackedScene" uid="uid://cfcko03l7hkgk" path="res://warrior.tscn" id="2_ejm3v"]
 [ext_resource type="PackedScene" uid="uid://bfjdojxfhd73s" path="res://pyromancer.tscn" id="3_olf6d"]
+[ext_resource type="PackedScene" uid="uid://b4s3d11422rrr" path="res://arrow.tscn" id="4_io3e7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxj1h"]
 
@@ -25,3 +26,6 @@ position = Vector2(16, 192)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(280, 184)
 shape = SubResource("RectangleShape2D_uxj1h")
+
+[node name="Arrow" parent="." instance=ExtResource("4_io3e7")]
+position = Vector2(364, 135)

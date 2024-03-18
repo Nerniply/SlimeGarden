@@ -25,22 +25,13 @@ func collide(area: Area2D):
 			var enemyhp = area.get_parent().gethp()
 			if (enemyhp < curhp):
 				curhp -= enemyhp
-				print(curhp)
+				#print(curhp)
 				drophp(enemyhp)
 			else:
 				get_tree().reload_current_scene()
 		if (area.get_parent() is Health):
 			curhp += 1
-			print(curhp)
-	if area.is_in_group("Explosion"):
-		var enemyhp = area.get_parent().gethp()
-		#$AnimatedSprite2D.modulate = Color(1, 0, 0)
-		if (enemyhp < curhp):
-			curhp -= enemyhp
-			print(curhp)
-			drophp(enemyhp)
-		else:
-			get_tree().reload_current_scene()
+			#print(curhp)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

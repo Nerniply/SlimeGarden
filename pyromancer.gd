@@ -37,7 +37,7 @@ func getShoot():
 func startCasting(area: Area2D) -> void:
 	if (area.get_parent() is Player):
 		if currState == pyro.MOVE:
-			# print("changing state: TARGET")
+			#print("changing state: TARGET")
 			setState(pyro.TARGET)
 		inRange = true
 
@@ -84,11 +84,11 @@ func _process(delta):
 			else:
 				$AnimatedSprite2D.flip_h = false
 				$AnimatedSprite2D.play("idle_L")
+			timervar += 1
 			if timervar == 120: # time spent in this state (~2 sec)
 				timervar = 0
-				# print("changing state: CAST")
+				#print("changing state: CAST")
 				setState(pyro.CAST)
-			timervar += 1
 		pyro.CAST:
 			readyToShoot = true
 			if relativeposition.x > 0:
@@ -107,12 +107,12 @@ func _process(delta):
 			else:
 				$AnimatedSprite2D.flip_h = false
 				$AnimatedSprite2D.play("idle_L")
+			timervar += 1
 			if timervar == 120: # time spent in this state (~2 sec)
 				timervar = 0
 				if inRange:
-					# print("changing state: TARGET")
+					#print("changing state: TARGET")
 					setState(pyro.TARGET)
 				else:
-					# print("changing state: MOVE")
+					#print("changing state: MOVE")
 					setState(pyro.MOVE)
-			timervar += 1
