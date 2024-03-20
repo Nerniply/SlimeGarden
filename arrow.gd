@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var player = get_parent().get_node("Rosa")
+@onready var player = get_parent().get_parent().get_node("Rosa")
 var hp = 1
 var spd = 0
 var timervar = 0

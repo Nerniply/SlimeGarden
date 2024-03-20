@@ -11,7 +11,6 @@ var relativeposition = Vector2()
 
 enum archer {
 	MOVE,
-	AIM,
 	SHOOT
 }
 
@@ -42,15 +41,17 @@ func setState(newState: int):
 func spawnArrow():
 	add_child(load("res://arrow.tscn").instantiate())
 
-func _physics_process(delta):
-	if self.currState == archer.MOVE:
-		self.velocity = position.direction_to(target.position) * spd
-	move_and_slide()
+#func _physics_process(delta):
+#	if self.currState == archer.MOVE:
+#		self.velocity = position.direction_to(target.position) * spd
+#	move_and_slide()
 
-func _process(delta):
+func _physics_process(delta):
 	relativeposition = target.position - position
 	match currState:
 		archer.MOVE:
+			self.velocity = position.direction_to(target.position) * spd
+			move_and_slide()
 			if relativeposition.x > 0:
 				$AnimatedSprite2D.flip_h = true
 				$AnimatedSprite2D.play("move_L")
@@ -58,11 +59,12 @@ func _process(delta):
 				$AnimatedSprite2D.flip_h = false
 				$AnimatedSprite2D.play("move_L")
 			if inRange:
-				setState(archer.AIM)
-		archer.AIM:
+				setState(archer.SHOOT)
+		archer.SHOOT:
 			if timervar == 0:
 				spawnArrow()
-		archer.SHOOT:
-			if !inRange:
-				setState(archer.MOVE)
-	
+			if timervar == 120:
+				timervar = -1
+				if !inRange:
+					setState(archer.MOVE)
+			timervar += 1
