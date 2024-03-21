@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cacf43h37ph1p"]
+
+[ext_resource type="PackedScene" uid="uid://b4s3d11422rrr" path="res://arrow.tscn" id="1_3ac1q"]
+
+[node name="ArcherAttack" type="Node"]
+
+[node name="Arrow" parent="." instance=ExtResource("1_3ac1q")]

@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var target = get_parent().get_node("Rosa")
 var hp = 1
 var spd = 220
-var timervar = 1 # keps track of frames and allows state timing
+var timervar = 0 # keps track of frames and allows state timing
 signal stateChanged(newState)
 var currState: int = archer.MOVE
 var inRange = false
@@ -39,7 +39,7 @@ func setState(newState: int):
 	emit_signal("stateChanged", currState)
 
 func spawnArrow():
-	add_child(load("res://arrow.tscn").instantiate())
+	add_child(load("res://archer_attack.tscn").instantiate())
 
 #func _physics_process(delta):
 #	if self.currState == archer.MOVE:
