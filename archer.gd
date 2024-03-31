@@ -53,11 +53,10 @@ func _physics_process(delta):
 			self.velocity = position.direction_to(target.position) * spd
 			move_and_slide()
 			if relativeposition.x > 0:
-				$AnimatedSprite2D.flip_h = true
-				$AnimatedSprite2D.play("move_L")
+				$AnimatedSprite2D.flip_h = true # right
 			else:
-				$AnimatedSprite2D.flip_h = false
-				$AnimatedSprite2D.play("move_L")
+				$AnimatedSprite2D.flip_h = false # left
+			$AnimatedSprite2D.play("move_L")
 			if inRange:
 				setState(archer.SHOOT)
 		archer.SHOOT:

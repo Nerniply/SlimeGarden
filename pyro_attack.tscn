@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bluuwsqje54qc"]
+
+[ext_resource type="PackedScene" uid="uid://bol46k1icbo1" path="res://fireball.tscn" id="1_w2j84"]
+[ext_resource type="PackedScene" uid="uid://b4o7pucun2ax4" path="res://fireball_indicator.tscn" id="2_rfwjl"]
+
+[node name="PyroAttack" type="Node"]
+
+[node name="Fireball" parent="." instance=ExtResource("1_w2j84")]
+
+[node name="FireballIndicator" parent="." instance=ExtResource("2_rfwjl")]

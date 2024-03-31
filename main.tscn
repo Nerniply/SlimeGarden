@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://csmj3pq3yqc4r"]
+[gd_scene load_steps=4 format=3 uid="uid://csmj3pq3yqc4r"]
 
 [ext_resource type="PackedScene" uid="uid://dcsmkol37yt11" path="res://rosa.tscn" id="1_86t2s"]
-[ext_resource type="PackedScene" uid="uid://cfcko03l7hkgk" path="res://warrior.tscn" id="2_ejm3v"]
-[ext_resource type="PackedScene" uid="uid://bfjdojxfhd73s" path="res://pyromancer.tscn" id="3_olf6d"]
-[ext_resource type="PackedScene" uid="uid://28wyjufjw4rk" path="res://archer.tscn" id="4_31s7w"]
+[ext_resource type="PackedScene" uid="uid://edvvxy2r8buk" path="res://knight.tscn" id="2_ury1t"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxj1h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wr1yp"]
 
 [node name="Main" type="Node"]
 
@@ -15,17 +13,15 @@ format = 2
 [node name="Rosa" parent="." instance=ExtResource("1_86t2s")]
 position = Vector2(320, 180)
 
-[node name="Warrior" parent="." instance=ExtResource("2_ejm3v")]
-position = Vector2(501, 182)
+[node name="Knight" parent="." instance=ExtResource("2_ury1t")]
+position = Vector2(656, 178)
 
-[node name="Pyromancer" parent="." instance=ExtResource("3_olf6d")]
-position = Vector2(16, 192)
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Solid", "Wall"]]
+position = Vector2(254, 51)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(280, 184)
-shape = SubResource("RectangleShape2D_uxj1h")
-
-[node name="Archer" parent="." instance=ExtResource("4_31s7w")]
-position = Vector2(521, 354)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("RectangleShape2D_wr1yp")

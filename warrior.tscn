@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfcko03l7hkgk"]
+[gd_scene load_steps=10 format=3 uid="uid://cfcko03l7hkgk"]
 
 [ext_resource type="Script" path="res://warrior.gd" id="1_lnviq"]
 [ext_resource type="Texture2D" uid="uid://c0n4osuvsp6si" path="res://Assets/Enemies/Slime Garden Pixel Arts-Warrior Moving.png" id="2_2a8b8"]
-[ext_resource type="Texture2D" uid="uid://cmp5ci6khxc57" path="res://Assets/Enemies/Slime Garden Pixel Arts-Warrior Moving R.png" id="3_v3k7y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdi7f"]
 atlas = ExtResource("2_2a8b8")
@@ -19,22 +18,6 @@ region = Rect2(100, 0, 50, 50)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qog41"]
 atlas = ExtResource("2_2a8b8")
 region = Rect2(150, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x36kl"]
-atlas = ExtResource("3_v3k7y")
-region = Rect2(150, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqkl0"]
-atlas = ExtResource("3_v3k7y")
-region = Rect2(100, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyr4v"]
-atlas = ExtResource("3_v3k7y")
-region = Rect2(50, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wp753"]
-atlas = ExtResource("3_v3k7y")
-region = Rect2(0, 0, 50, 50)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0apwg"]
 animations = [{
@@ -53,23 +36,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_L",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x36kl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqkl0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gyr4v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wp753")
-}],
-"loop": true,
-"name": &"move_R",
 "speed": 5.0
 }]
 

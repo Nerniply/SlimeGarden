@@ -5,6 +5,7 @@ var maxhp = 25
 var curhp = 25
 var spd = 200
 var direction = "X"
+var input = Vector2()
 
 func SetMaxHP(newhp):
 	maxhp = newhp
@@ -38,7 +39,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	var input = Vector2()
+	input = Vector2(0,0)
 	if Input.is_key_pressed(KEY_D):
 		input.x += 1
 	else:
@@ -57,23 +58,24 @@ func _physics_process(delta):
 		input.y -= 0
 	velocity = input.normalized()*spd
 	move_and_slide()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
 	if velocity.x > 0:
-		$AnimatedSprite2D.play("move_R")
+		$AnimatedSprite2D.flip_h = true # right
+		$AnimatedSprite2D.play("move_L")
 		direction = "R"
-	if velocity.x < 0:
+	elif velocity.x < 0:
+		$AnimatedSprite2D.flip_h = false # left
 		$AnimatedSprite2D.play("move_L")
 		direction = "L"
 	if velocity.x == 0:
 		if velocity.y > 0:
 			if direction == "R":
-				$AnimatedSprite2D.play("move_R")
-			else: $AnimatedSprite2D.play("move_L")
+				$AnimatedSprite2D.flip_h = true # right
+			else: $AnimatedSprite2D.flip_h = false # left
+			$AnimatedSprite2D.play("move_L")
 		if velocity.y < 0:
 			if direction == "L":
-				$AnimatedSprite2D.play("move_L")
-			else: $AnimatedSprite2D.play("move_R")
+				$AnimatedSprite2D.flip_h = false # left
+			else: $AnimatedSprite2D.flip_h = true # right
+			$AnimatedSprite2D.play("move_L")
 		if velocity.y == 0:
 			$AnimatedSprite2D.play("idle")
