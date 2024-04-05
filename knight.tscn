@@ -183,6 +183,7 @@ sprite_frames = SubResource("SpriteFrames_kohiq")
 animation = &"charge_L2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.9, 0.9)
 shape = SubResource("CapsuleShape2D_yhp6g")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]

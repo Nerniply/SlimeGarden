@@ -1,27 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://csmj3pq3yqc4r"]
+[gd_scene load_steps=3 format=3 uid="uid://csmj3pq3yqc4r"]
 
-[ext_resource type="PackedScene" uid="uid://dcsmkol37yt11" path="res://rosa.tscn" id="1_86t2s"]
-[ext_resource type="PackedScene" uid="uid://edvvxy2r8buk" path="res://knight.tscn" id="2_ury1t"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wr1yp"]
+[ext_resource type="Texture2D" uid="uid://dfxburo20s5dx" path="res://Assets/Enemies/StartpagePlaceholder.png" id="1_7aakm"]
+[ext_resource type="Script" path="res://main.gd" id="1_ifndq"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_ifndq")
 
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("1_7aakm")
 
-[node name="Rosa" parent="." instance=ExtResource("1_86t2s")]
-position = Vector2(320, 180)
+[node name="START" type="Button" parent="."]
+offset_left = 384.0
+offset_top = 344.0
+offset_right = 440.0
+offset_bottom = 375.0
+text = "START"
 
-[node name="Knight" parent="." instance=ExtResource("2_ury1t")]
-position = Vector2(656, 178)
+[node name="QUIT" type="Button" parent="."]
+offset_left = 840.0
+offset_top = 344.0
+offset_right = 887.0
+offset_bottom = 375.0
+text = "QUIT"
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["Solid", "Wall"]]
-position = Vector2(254, 51)
-
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
-shape = SubResource("RectangleShape2D_wr1yp")
+[connection signal="pressed" from="START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="QUIT" to="." method="_on_quit_pressed"]

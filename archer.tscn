@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://28wyjufjw4rk"]
 
 [ext_resource type="Script" path="res://archer.gd" id="1_7s73p"]
-[ext_resource type="Texture2D" uid="uid://c3mvc4fbrbwii" path="res://icon.svg" id="2_emriu"]
+[ext_resource type="Texture2D" uid="uid://c40fw43ojgls8" path="res://Assets/Enemies/ArcherMovePlaceholder.png" id="2_uff18"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p0bl7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_emriu")
+"texture": ExtResource("2_uff18")
 }],
 "loop": true,
 "name": &"move_L",
