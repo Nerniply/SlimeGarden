@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1qquk8lxy17u"]
+
+[ext_resource type="Texture2D" uid="uid://1sx1xletb4c4" path="res://Assets/nerncake.png" id="1_ayx8s"]
+[ext_resource type="Script" path="res://archer_event.gd" id="1_qkq5y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8uy7"]
+
+[node name="ArcherEvent" type="Node2D" groups=["Enemy"]]
+script = ExtResource("1_qkq5y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ayx8s")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_d8uy7")

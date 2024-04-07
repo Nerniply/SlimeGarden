@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci260tn4aaoif"]
+
+[ext_resource type="Texture2D" uid="uid://c2yfwk5u44amn" path="res://Assets/Enemies/SpeedBoost.png" id="1_hv5ic"]
+[ext_resource type="Script" path="res://speed_boost.gd" id="2_gh3bl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m860o"]
+
+[node name="SpeedBoost" type="Sprite2D"]
+texture = ExtResource("1_hv5ic")
+script = ExtResource("2_gh3bl")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Hitbox"]]
+scale = Vector2(2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_m860o")
+
+[connection signal="area_entered" from="Area2D" to="." method="collide"]

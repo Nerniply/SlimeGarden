@@ -18,8 +18,7 @@ func collide(area: Area2D):
 	if area.is_in_group("Hitbox"):
 		if area.get_parent().is_in_group("Solid"):
 			queue_free()
-			explosion.global_position = self.global_position #
-			#explosion.position = self.position
+			explosion.position = self.position # global_
 			explosion.size = 2.5
 			get_parent().add_child(explosion)
 			get_parent().get_node("FireballIndicator").canDespawn = true

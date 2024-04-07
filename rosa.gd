@@ -3,9 +3,13 @@ class_name Player
 
 var maxhp = 25
 var curhp = 25
-var spd = 200
+var spd
 var direction = "X"
 var input = Vector2()
+var spdup
+var spduptimer
+var pacman
+var pactimer
 
 func SetMaxHP(newhp):
 	maxhp = newhp
@@ -21,7 +25,7 @@ func drophp(amount):
 # Controls collisions with various objects
 func collide(area: Area2D):
 	if area.is_in_group("Hitbox"):
-		if (area.get_parent().is_in_group("Enemy")):
+		if (area.get_parent().is_in_group("Enemy")) and !pacman:
 			#$AnimatedSprite2D.modulate = Color(1, 0, 0)
 			var enemyhp = area.get_parent().gethp()
 			if (enemyhp < curhp):
@@ -33,12 +37,32 @@ func collide(area: Area2D):
 		if (area.get_parent() is Health):
 			curhp += 1
 			#print(curhp)
+		if (area.get_parent() is FullHeal):
+			curhp = maxhp
+		if (area.get_parent() is SpeedBoost):
+			spdup = true
+			spduptimer = 0
+		if (area.get_parent() is PacMan):
+			pacman = true
+			pactimer = 0
+	$health.text = str(curhp)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
+	if spdup and spduptimer < 600:
+		spd = 400
+		spduptimer += 1
+	else:
+		spdup = false
+		spd = 200
+
+	if pacman and pactimer < 600:
+		pactimer += 1
+	else: pacman = false
+	
 	input = Vector2(0,0)
 	if Input.is_key_pressed(KEY_D):
 		input.x += 1
