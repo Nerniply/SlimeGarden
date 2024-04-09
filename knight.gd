@@ -65,6 +65,10 @@ func setState(newState: int):
 func gethp():
 	return hp
 
+func _on_VisibilityNotifier2D_screen_exited():
+	if currState == knight.CHARGE:
+		setState(knight.STUN)
+
 func collide(area: Area2D):
 	if currState == knight.CHARGE:
 		if area.get_parent().is_in_group("Wall"):
@@ -92,7 +96,7 @@ func _physics_process(delta):
 			timervar += 1
 		knight.CHARGE:
 			hp = 5
-			spd = 250
+			spd = 600
 			if relativeposition.x > 0:
 				$AnimatedSprite2D.flip_h = true # right
 			else: $AnimatedSprite2D.flip_h = false # left

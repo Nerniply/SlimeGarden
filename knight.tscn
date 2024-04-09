@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://edvvxy2r8buk"]
+[gd_scene load_steps=32 format=3 uid="uid://edvvxy2r8buk"]
 
 [ext_resource type="Texture2D" uid="uid://c3mvc4fbrbwii" path="res://icon.svg" id="1_1dyvi"]
 [ext_resource type="Script" path="res://knight.gd" id="1_63f1y"]
 [ext_resource type="Texture2D" uid="uid://v4st03eqd0kk" path="res://Assets/Enemies/Slime Garden Pixel Arts-BK Attack.png" id="2_cn2bg"]
 [ext_resource type="Texture2D" uid="uid://bvosjg027u8sl" path="res://Assets/Enemies/BK Atk2-Sheet.png" id="4_4a0pk"]
+[ext_resource type="Texture2D" uid="uid://byss4p4eblepu" path="res://Assets/Enemies/Slime Garden Pixel Arts-BK Idle.png" id="4_4nt18"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jciop"]
 atlas = ExtResource("2_cn2bg")
@@ -16,6 +17,26 @@ region = Rect2(3840, 0, 640, 320)
 [sub_resource type="AtlasTexture" id="AtlasTexture_635e0"]
 atlas = ExtResource("4_4a0pk")
 region = Rect2(4480, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsg8x"]
+atlas = ExtResource("4_4nt18")
+region = Rect2(0, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn2k1"]
+atlas = ExtResource("4_4nt18")
+region = Rect2(640, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7qok"]
+atlas = ExtResource("4_4nt18")
+region = Rect2(1280, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddlra"]
+atlas = ExtResource("4_4nt18")
+region = Rect2(1920, 0, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xws3y"]
+atlas = ExtResource("4_4nt18")
+region = Rect2(2560, 0, 640, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eb1wk"]
 atlas = ExtResource("2_cn2bg")
@@ -100,7 +121,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_1dyvi")
+"texture": SubResource("AtlasTexture_bsg8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn2k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7qok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddlra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xws3y")
 }],
 "loop": true,
 "name": &"stun_L",
@@ -182,7 +215,7 @@ script = ExtResource("1_63f1y")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8, 0)
 sprite_frames = SubResource("SpriteFrames_kohiq")
-animation = &"charge_L2"
+animation = &"stun_L"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.9, 0.9)
@@ -195,4 +228,7 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CapsuleShape2D_d4uoa")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="area_entered" from="Hitbox" to="." method="collide"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

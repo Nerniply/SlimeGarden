@@ -2,6 +2,7 @@ extends Node2D
 
 var ArrowEventTrigger = false
 var ArrowTimer = 0
+var ArrowDir = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,8 +31,9 @@ func _on_knight_spawn_pressed():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if ArrowEventTrigger:
-		if ArrowTimer % 15 == 0:
+		if ArrowTimer % 5 == 0:
 			add_child(load("res://archer_event.tscn").instantiate())
+			ArrowDir *= -1
 		if ArrowTimer == 180:
 			ArrowTimer = -1
 			ArrowEventTrigger = false

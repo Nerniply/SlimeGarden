@@ -96,8 +96,10 @@ func _physics_process(delta):
 			else:
 				$AnimatedSprite2D.flip_h = false # left
 			$AnimatedSprite2D.play("move_L")
-			if inRange:
+			if  inRange or timervar == 60:
+				timervar = -1
 				setState(archer.SHOOT)
+			timervar += 1
 		archer.SHOOT:
 			if timervar == 0:
 				spawnArrow()
