@@ -12,7 +12,11 @@ func _process(delta):
 
 
 func _on_start_pressed():
-	get_tree().change_scene_to_file("res://game.tscn")
+	get_tree().change_scene_to_file("res://realgame.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_techdemo_pressed():
+	get_tree().change_scene_to_file("res://game.tscn")
