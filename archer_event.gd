@@ -3,14 +3,14 @@ extends Node2D
 @onready var player = get_parent().get_node("Rosa")
 @onready var dir = get_parent().ArrowDir
 var hp = 1
-var spd = 5
+var spd = 10
 var targetDirection
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(dir)
-	var spawnY = randf_range(player.global_position.y - 450, player.global_position.y + 450)
-	var spawnX = 650
+	var spawnY = randf_range(player.global_position.y - 450, player.global_position.y + 450) # based on screen size
+	var spawnX = 650 # based on screen size
 	self.global_position = Vector2(player.global_position.x - (dir * spawnX), spawnY)
 	var endPos = Vector2(player.global_position.x + (dir * spawnX), spawnY)
 	look_at(endPos)

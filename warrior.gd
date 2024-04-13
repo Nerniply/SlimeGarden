@@ -11,6 +11,7 @@ var southhelper
 var westhelper
 
 func _ready():
+	# 735 = distance to corner of screen from center
 	spawnhelper = get_parent().get_node("Rosa").position
 	northhelper = get_parent().get_node("NorthWall").position.y - spawnhelper.y # y distance from player to north wall (will be -)
 	easthelper = get_parent().get_node("EastWall").position.x - spawnhelper.x # x distance from player to east wall (will be +)

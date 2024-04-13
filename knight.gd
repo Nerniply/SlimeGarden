@@ -17,6 +17,7 @@ var southhelper
 var westhelper
 
 func _ready():
+	# 735 = distance to corner of screen from center
 	spawnhelper = get_parent().get_node("Rosa").position
 	northhelper = get_parent().get_node("NorthWall").position.y - spawnhelper.y # y distance from player to north wall (will be -)
 	easthelper = get_parent().get_node("EastWall").position.x - spawnhelper.x # x distance from player to east wall (will be +)
@@ -96,7 +97,7 @@ func _physics_process(delta):
 			timervar += 1
 		knight.CHARGE:
 			hp = 5
-			spd = 600
+			spd = 1000
 			if relativeposition.x > 0:
 				$AnimatedSprite2D.flip_h = true # right
 			else: $AnimatedSprite2D.flip_h = false # left
@@ -114,7 +115,7 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("stun_L")
 			velocity = startposition.direction_to(targetPosition) * spd
 			move_and_slide()
-			if timervar == 90:
+			if timervar == 210: # ~3.5 sec
 				setState(knight.WINDUP)
 				timervar = -1
 			timervar += 1

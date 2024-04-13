@@ -24,6 +24,6 @@ func _physics_process(delta):
 		look_at(player.global_position)
 		targetDirection = (player.global_position - self.global_position).normalized()
 	else:
-		self.spd = 5
+		self.spd = 10
 		self.global_position += targetDirection * spd
 	timervar += 1

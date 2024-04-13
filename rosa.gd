@@ -34,7 +34,7 @@ func collide(area: Area2D):
 				drophp(enemyhp)
 			else:
 				get_tree().reload_current_scene()
-		if (area.get_parent() is Health):
+		if (area.get_parent() is Health) and curhp < maxhp:
 			curhp += 1
 			#print(curhp)
 		if (area.get_parent() is FullHeal):
@@ -45,13 +45,17 @@ func collide(area: Area2D):
 		if (area.get_parent() is PacMan):
 			pacman = true
 			pactimer = 0
-	$health.text = str(curhp)
+	#$healthtxt.text = str(curhp)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
+	$healthtxt.text = str(curhp)
+	$healthbar.max_value = maxhp
+	$healthbar.value = curhp
+	
 	if spdup and spduptimer < 600:
 		spd = 400
 		spduptimer += 1
