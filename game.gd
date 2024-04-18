@@ -30,6 +30,7 @@ func _on_knight_spawn_pressed():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	print(get_viewport().size)
 	if ArrowEventTrigger:
 		if ArrowTimer % 5 == 0:
 			add_child(load("res://archer_event.tscn").instantiate())

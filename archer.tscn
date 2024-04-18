@@ -28,6 +28,7 @@ sprite_frames = SubResource("SpriteFrames_p0bl7")
 animation = &"move_L"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.9, 0.9)
 shape = SubResource("CapsuleShape2D_2kir3")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]
