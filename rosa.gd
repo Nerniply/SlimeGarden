@@ -1,8 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
-var maxhp = 25
-var curhp = 25
+var maxhp = 20
+var curhp = 20
 var spd = 200
 var direction = "X"
 var input = Vector2()
@@ -53,6 +53,9 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
+	if curhp > maxhp:
+		curhp = maxhp
+	
 	if spdup and spduptimer < 600:
 		spduptimer += 1
 		if spduptimer == 600:

@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var player = get_parent().get_node("Rosa")
 @onready var dir = get_parent().ArrowDir
-var hp = 1
+var hp = 2
 var spd = 10
 var targetDirection
 

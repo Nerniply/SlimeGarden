@@ -39,14 +39,20 @@ func _on_forest_button_pressed():
 	currState += 1
 	$ForestButton.queue_free()
 	ArrowEventTrigger = true
+	$Rosa.maxhp -= 5
 
 func _on_marsh_button_pressed():
 	currState += 1
 	$MarshButton.queue_free()
+	$Rosa.maxhp -= 5
 
 func _on_cave_button_pressed():
 	currState += 1
 	$CaveButton.queue_free()
+	add_child(load("res://pyro_event.tscn").instantiate())
+	add_child(load("res://pyro_event.tscn").instantiate())
+	add_child(load("res://pyro_event.tscn").instantiate())
+	$Rosa.maxhp -= 5
 
 func _on_arrow_passage_area_entered(area):
 	if area.get_parent() is Player:
@@ -57,18 +63,14 @@ func _on_arrow_passage_area_exited(area):
 		ArrowPassageTrigger = false
 		ArrowTimer == -1
 
-#func _on_warrior_spawn_pressed():
-	#add_child(load("res://warrior.tscn").instantiate())
-#func _on_archer_spawn_pressed():
-	#add_child(load("res://archer.tscn").instantiate())
-	#ArrowEventTrigger = true
-#func _on_pyro_spawn_pressed():
-	#add_child(load("res://pyromancer.tscn").instantiate())
-	#add_child(load("res://pyro_event.tscn").instantiate())
-	#add_child(load("res://pyro_event.tscn").instantiate())
-	#add_child(load("res://pyro_event.tscn").instantiate())
-#func _on_knight_spawn_pressed():
-	#add_child(load("res://knight.tscn").instantiate())
+func _on_warrior_spawn_pressed():
+	add_child(load("res://warrior.tscn").instantiate())
+func _on_archer_spawn_pressed():
+	add_child(load("res://archer.tscn").instantiate())
+func _on_pyro_spawn_pressed():
+	add_child(load("res://pyromancer.tscn").instantiate())
+func _on_knight_spawn_pressed():
+	add_child(load("res://knight.tscn").instantiate())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

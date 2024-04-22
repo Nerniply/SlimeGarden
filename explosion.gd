@@ -2,7 +2,7 @@ extends Sprite2D
 
 var timervar = 0
 var size
-var hp = 1
+var hp = 3
 var explosions = preload("res://explosions.tscn").instantiate()
 
 func gethp():

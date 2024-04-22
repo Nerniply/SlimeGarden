@@ -316,6 +316,34 @@ value = 25.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
+[node name="WarriorSpawn" type="Button" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 568.0
+offset_right = 147.0
+offset_bottom = 599.0
+text = "Spawn Warrior"
+
+[node name="ArcherSpawn" type="Button" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 600.0
+offset_right = 140.0
+offset_bottom = 631.0
+text = "Spawn Archer"
+
+[node name="PyroSpawn" type="Button" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 632.0
+offset_right = 182.0
+offset_bottom = 663.0
+text = "Spawn Pyromancer"
+
+[node name="KnightSpawn" type="Button" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 664.0
+offset_right = 83.0
+offset_bottom = 695.0
+text = "Spawn Knight"
+
 [node name="MarshButton" type="Button" parent="."]
 offset_left = -2472.0
 offset_top = -1848.0
@@ -812,6 +840,10 @@ position = Vector2(400, 1472)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowPassage"]
 shape = SubResource("RectangleShape2D_4idvu")
 
+[connection signal="pressed" from="CanvasLayer/WarriorSpawn" to="." method="_on_warrior_spawn_pressed"]
+[connection signal="pressed" from="CanvasLayer/ArcherSpawn" to="." method="_on_archer_spawn_pressed"]
+[connection signal="pressed" from="CanvasLayer/PyroSpawn" to="." method="_on_pyro_spawn_pressed"]
+[connection signal="pressed" from="CanvasLayer/KnightSpawn" to="." method="_on_knight_spawn_pressed"]
 [connection signal="pressed" from="MarshButton" to="." method="_on_marsh_button_pressed"]
 [connection signal="pressed" from="ForestButton" to="." method="_on_forest_button_pressed"]
 [connection signal="pressed" from="CaveButton" to="." method="_on_cave_button_pressed"]
