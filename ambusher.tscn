@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://cow7kcy4f7oqf"]
+
+[ext_resource type="Script" path="res://ambusher.gd" id="1_ou2sd"]
+[ext_resource type="Texture2D" uid="uid://c0n4osuvsp6si" path="res://Assets/Enemies/Slime Garden Pixel Arts-Warrior Moving.png" id="2_uj6tg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rionw"]
+atlas = ExtResource("2_uj6tg")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogynx"]
+atlas = ExtResource("2_uj6tg")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqvjc"]
+atlas = ExtResource("2_uj6tg")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i6ur"]
+atlas = ExtResource("2_uj6tg")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rwibl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rionw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogynx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqvjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i6ur")
+}],
+"loop": true,
+"name": &"move_L",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6p0ue"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyhq5"]
+
+[node name="Ambusher" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_ou2sd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rwibl")
+animation = &"move_L"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("CapsuleShape2D_6p0ue")
+
+[node name="hitbox" type="Area2D" parent="." groups=["Hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CapsuleShape2D_gyhq5")
+
+[connection signal="area_entered" from="hitbox" to="." method="playercollide"]

@@ -144,6 +144,8 @@ shape = SubResource("CapsuleShape2D_1fgym")
 scale = Vector2(30, 30)
 shape = SubResource("CircleShape2D_w3elk")
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="area_entered" from="hitbox" to="." method="playercollide"]
 [connection signal="area_entered" from="detectionrange" to="." method="startCasting"]
 [connection signal="area_exited" from="detectionrange" to="." method="startMoving"]

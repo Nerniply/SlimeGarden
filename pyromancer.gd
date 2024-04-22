@@ -98,6 +98,12 @@ func spawnfireball():
 #	if currState == pyro.MOVE:
 		#position += (target.position - position).normalized() * spd
 
+func _on_tree_entered():
+	get_parent().currpyro += 1
+
+func _on_tree_exiting():
+	get_parent().currpyro -= 1
+
 func _physics_process(delta):
 	relativeposition = target.position - position
 	match currState:

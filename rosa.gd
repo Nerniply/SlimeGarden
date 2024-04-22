@@ -3,7 +3,7 @@ class_name Player
 
 var maxhp = 25
 var curhp = 25
-var spd
+var spd = 200
 var direction = "X"
 var input = Vector2()
 var spdup
@@ -20,7 +20,7 @@ func gethp():
 # Controlls the dropping of health when taking damage
 func drophp(amount):
 	for i in range(amount):
-		get_parent().add_child(load("res://health.tscn").instantiate())
+		get_parent().add_child(load("res://health_slime.tscn").instantiate())
 
 # Controls collisions with various objects
 func collide(area: Area2D):
@@ -42,6 +42,7 @@ func collide(area: Area2D):
 		if (area.get_parent() is SpeedBoost):
 			spdup = true
 			spduptimer = 0
+			spd *= 2
 		if (area.get_parent() is PacMan):
 			pacman = true
 			pactimer = 0
@@ -52,16 +53,12 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	$healthtxt.text = str(curhp)
-	$healthbar.max_value = maxhp
-	$healthbar.value = curhp
-	
 	if spdup and spduptimer < 600:
-		spd = 400
 		spduptimer += 1
+		if spduptimer == 600:
+			spd /= 2
 	else:
 		spdup = false
-		spd = 200
 
 	if pacman and pactimer < 600:
 		pactimer += 1

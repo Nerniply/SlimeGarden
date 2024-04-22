@@ -52,6 +52,12 @@ func playercollide(area: Area2D):
 		if (hp < area.get_parent().gethp()):
 			queue_free()
 
+func _on_tree_entered():
+	get_parent().currwarriors += 1
+
+func _on_tree_exiting():
+	get_parent().currwarriors -= 1
+
 func _physics_process(delta):
 	relativeposition = target.position - position
 	if relativeposition.x > 0:

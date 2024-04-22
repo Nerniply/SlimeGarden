@@ -60,4 +60,6 @@ shape = SubResource("CapsuleShape2D_56e3c")
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CapsuleShape2D_5u7wt")
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="area_entered" from="hitbox" to="." method="playercollide"]

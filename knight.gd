@@ -78,6 +78,12 @@ func collide(area: Area2D):
 		if area.get_parent() is Player:
 			queue_free()
 
+func _on_tree_entered():
+	get_parent().currknight += 1
+
+func _on_tree_exiting():
+	get_parent().currknight -= 1
+
 func _physics_process(delta):
 	print(self.position)
 	#relativeposition = target.position - position

@@ -51,7 +51,8 @@ func _ready():
 
 enum archer {
 	MOVE,
-	SHOOT
+	SHOOT,
+	COOLDOWN
 }
 
 func gethp():
@@ -86,6 +87,12 @@ func spawnArrow():
 #		self.velocity = position.direction_to(target.position) * spd
 #	move_and_slide()
 
+func _on_tree_entered():
+	get_parent().currarchers += 1
+
+func _on_tree_exiting():
+	get_parent().currarchers -= 1
+
 func _physics_process(delta):
 	relativeposition = target.position - position
 	match currState:
@@ -102,10 +109,26 @@ func _physics_process(delta):
 				setState(archer.SHOOT)
 			timervar += 1
 		archer.SHOOT:
+			if relativeposition.x > 0:
+				$AnimatedSprite2D.flip_h = true # right
+			else:
+				$AnimatedSprite2D.flip_h = false # left
+			$AnimatedSprite2D.play("shoot_L")
 			if timervar == 0:
 				spawnArrow()
-			if timervar == 120:
+			if timervar == 108:
+				timervar = -1
+				setState(archer.COOLDOWN)
+			timervar += 1
+		archer.COOLDOWN:
+			if relativeposition.x > 0:
+				$AnimatedSprite2D.flip_h = true # right
+			else:
+				$AnimatedSprite2D.flip_h = false # left
+			$AnimatedSprite2D.play("idle_L")
+			if timervar == 12:
 				timervar = -1
 				if !inRange:
 					setState(archer.MOVE)
+				else: setState(archer.SHOOT)
 			timervar += 1
