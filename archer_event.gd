@@ -8,7 +8,7 @@ var targetDirection
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(dir)
+	#print(dir)
 	var spawnY = randf_range(player.global_position.y - 450, player.global_position.y + 450) # based on screen size
 	var spawnX = 650 # based on screen size
 	self.global_position = Vector2(player.global_position.x - (dir * spawnX), spawnY)
@@ -22,10 +22,10 @@ func gethp():
 func collide(area: Area2D):
 	if area.is_in_group("Hitbox"):
 		if area.get_parent().is_in_group("Solid"):
-			get_parent().queue_free()
+			queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	get_parent().queue_free()
+	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
