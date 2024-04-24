@@ -15,13 +15,39 @@ var currknight = 0
 var maxknight = 0
 
 
+#var enabledamount = 4
+#var randspawn
+#var count = 0
+#func get_spawn():
+	#var output
+	#count = 0
+	#randspawn = randi_range(1, enabledamount)
+	##print(enabledamount)
+	##print(randspawn)
+	#if !$Rosa/SpawnArea1.enabled and count != randspawn:
+		#count += 1
+		#if count == randspawn:
+			#output = $Rosa/SpawnArea1.global_position
+	#if !$Rosa/SpawnArea2.enabled and count != randspawn:
+		#count += 1
+		#if count == randspawn:
+			#output = $Rosa/SpawnArea2.global_position
+	#if !$Rosa/SpawnArea3.enabled and count != randspawn:
+		#count += 1
+		#if count == randspawn:
+			#output = $Rosa/SpawnArea3.global_position
+	#if !$Rosa/SpawnArea4.enabled and count != randspawn:
+		#count += 1
+		#if count == randspawn:
+			#output = $Rosa/SpawnArea4.global_position
+	
 
-enum gamephase {
-	MOVE,
-	TARGET,
-	CAST,
-	COOLDOWN
-}
+#enum gamephase {
+	#MOVE,
+	#TARGET,
+	#CAST,
+	#COOLDOWN
+#}
 
 
 func setState(newState: int):
@@ -74,6 +100,9 @@ func _on_knight_spawn_pressed():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	#get_spawn()
+	
+	
 	$CanvasLayer/healthtxt.text = str($Rosa.curhp)
 	$CanvasLayer/healthbar.max_value = $Rosa.maxhp
 	$CanvasLayer/healthbar.value = $Rosa.curhp

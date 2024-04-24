@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://xkakffedqw0g"]
+
+[ext_resource type="Script" path="res://game_over.gd" id="1_j0l70"]
+
+[sub_resource type="Gradient" id="Gradient_gxy02"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6uc3h"]
+gradient = SubResource("Gradient_gxy02")
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_j0l70")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(5, 720)
+texture = SubResource("GradientTexture1D_6uc3h")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/GridContainer"]
+layout_mode = 2
+text = "Splattered..."
+
+[node name="RESTART" type="Button" parent="CenterContainer/GridContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="MAINMENU" type="Button" parent="CenterContainer/GridContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="CenterContainer/GridContainer/RESTART" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/MAINMENU" to="." method="_on_mainmenu_pressed"]

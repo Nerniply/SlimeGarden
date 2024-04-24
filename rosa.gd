@@ -33,7 +33,7 @@ func collide(area: Area2D):
 				#print(curhp)
 				drophp(enemyhp)
 			else:
-				get_tree().reload_current_scene()
+				get_tree().change_scene_to_file("res://game.tscn")
 		if (area.get_parent() is Health) and curhp < maxhp:
 			curhp += 1
 			#print(curhp)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://bjuajrjdbccod"]
+[gd_scene load_steps=58 format=3 uid="uid://bjuajrjdbccod"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_dfy8r"]
 [ext_resource type="PackedScene" uid="uid://dcsmkol37yt11" path="res://rosa.tscn" id="2_1lsgy"]
@@ -17,15 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://cdnn6bjfb5m12" path="res://Assets/Garten Mooziks/Marshlands.wav" id="9_uk5q8"]
 [ext_resource type="Script" path="res://CaveAreaTrigger.gd" id="10_4isgv"]
 [ext_resource type="AudioStream" uid="uid://o4fsat31rgft" path="res://Assets/Garten Mooziks/Cave.wav" id="11_563h8"]
-[ext_resource type="Script" path="res://SpawnArea1.gd" id="15_aiiuf"]
-[ext_resource type="Script" path="res://SpawnArea2.gd" id="16_gum77"]
 [ext_resource type="PackedScene" uid="uid://cow7kcy4f7oqf" path="res://ambusher.tscn" id="16_vl2yr"]
 [ext_resource type="Script" path="res://HordeTrigger1.gd" id="17_c1t5e"]
-[ext_resource type="Script" path="res://SpawnArea3.gd" id="17_hf0ba"]
-[ext_resource type="Script" path="res://SpawnArea4.gd" id="18_ts26e"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_6yds5"]
-radius = 750.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eaiec"]
 size = Vector2(3824, 2144)
@@ -247,11 +240,19 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_efphf"]
 gradient = SubResource("Gradient_heh77")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_73ec7"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qhivg"]
+
 [sub_resource type="Gradient" id="Gradient_fp6y1"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_y2edy"]
 gradient = SubResource("Gradient_fp6y1")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cotcy"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t5lle"]
 
 [sub_resource type="Gradient" id="Gradient_x573n"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -259,65 +260,15 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cbpfg"]
 gradient = SubResource("Gradient_x573n")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rof08"]
+
 [sub_resource type="Gradient" id="Gradient_7i7ox"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_np7n6"]
 gradient = SubResource("Gradient_7i7ox")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cd5d4"]
-radius = 15.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vftfi"]
-radius = 15.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xph8w"]
-radius = 15.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_e7biy"]
-radius = 15.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_otyxk"]
-size = Vector2(2240, 2240)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lyh2u"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hjqm"]
-size = Vector2(2960, 1480)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs1p4"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t5lle"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cotcy"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtwxp"]
-size = Vector2(1480, 2960)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sf03c"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1k3u"]
-size = Vector2(2960, 1600)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qral"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rof08"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w024e"]
-size = Vector2(4500, 1600)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hru6q"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tl13c"]
-size = Vector2(2000, 2500)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1jmu"]
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o753c"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qhivg"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_73ec7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odc3a"]
 size = Vector2(280, 56)
@@ -393,12 +344,6 @@ offset_right = 83.0
 offset_bottom = 695.0
 text = "Spawn Knight"
 
-[node name="Area2D" type="Area2D" parent="CanvasLayer"]
-position = Vector2(640, 360)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Area2D"]
-shape = SubResource("CircleShape2D_6yds5")
-
 [node name="MarshButton" type="Button" parent="."]
 offset_left = -2472.0
 offset_top = -1848.0
@@ -429,7 +374,7 @@ z_index = -4096
 texture = ExtResource("2_p1djm")
 
 [node name="Marshland" type="Sprite2D" parent="MystMaps"]
-position = Vector2(-2084, -1480)
+position = Vector2(-2083, -1480)
 texture = ExtResource("3_nti6x")
 
 [node name="Forest" type="Sprite2D" parent="MystMaps"]
@@ -455,7 +400,7 @@ libraries = {
 }
 
 [node name="MarshAreaTrigger" type="Area2D" parent="."]
-position = Vector2(-2084, -1480)
+position = Vector2(-2083, -1480)
 script = ExtResource("8_fqqfg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MarshAreaTrigger"]
@@ -504,60 +449,80 @@ position = Vector2(0, -2000)
 rotation = 3.14159
 texture = SubResource("GradientTexture1D_efphf")
 
+[node name="Area2D" type="Area2D" parent="NorthWall" groups=["Hitbox"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NorthWall/Area2D"]
+shape = SubResource("WorldBoundaryShape2D_73ec7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NorthWall/Area2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NorthWall/Area2D/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_qhivg")
+
 [node name="EastWall" type="Sprite2D" parent="." groups=["Solid", "Wall"]]
 position = Vector2(2850, 0)
 rotation = -1.5708
 texture = SubResource("GradientTexture1D_y2edy")
 
+[node name="Area2D" type="Area2D" parent="EastWall" groups=["Hitbox"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EastWall/Area2D"]
+shape = SubResource("WorldBoundaryShape2D_cotcy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="EastWall/Area2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EastWall/Area2D/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_t5lle")
+
 [node name="SouthWall" type="Sprite2D" parent="." groups=["Solid", "Wall"]]
-position = Vector2(0, 1848)
+position = Vector2(0, 2190)
 texture = SubResource("GradientTexture1D_cbpfg")
+
+[node name="Area2D" type="Area2D" parent="SouthWall" groups=["Hitbox"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SouthWall/Area2D"]
+shape = SubResource("WorldBoundaryShape2D_cotcy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SouthWall/Area2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SouthWall/Area2D/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_rof08")
 
 [node name="WestWall" type="Sprite2D" parent="." groups=["Solid", "Wall"]]
 position = Vector2(-2850, 0)
 rotation = 1.5708
 texture = SubResource("GradientTexture1D_np7n6")
 
+[node name="Area2D" type="Area2D" parent="WestWall" groups=["Hitbox"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WestWall/Area2D"]
+shape = SubResource("WorldBoundaryShape2D_cotcy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WestWall/Area2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WestWall/Area2D/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_o753c")
+
 [node name="Rosa" parent="." instance=ExtResource("2_1lsgy")]
-position = Vector2(0, -704)
+position = Vector2(0, -720)
 
 [node name="PlayerCam" type="Camera2D" parent="Rosa"]
-
-[node name="SpawnArea1" type="Area2D" parent="Rosa"]
-position = Vector2(-780, -430)
-scale = Vector2(1, 1)
-monitorable = false
-script = ExtResource("15_aiiuf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rosa/SpawnArea1"]
-shape = SubResource("CircleShape2D_cd5d4")
-
-[node name="SpawnArea2" type="Area2D" parent="Rosa"]
-position = Vector2(780, -430)
-scale = Vector2(1, 1)
-monitorable = false
-script = ExtResource("16_gum77")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rosa/SpawnArea2"]
-shape = SubResource("CircleShape2D_vftfi")
-
-[node name="SpawnArea3" type="Area2D" parent="Rosa"]
-position = Vector2(780, 430)
-scale = Vector2(1, 1)
-monitorable = false
-script = ExtResource("17_hf0ba")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rosa/SpawnArea3"]
-shape = SubResource("CircleShape2D_xph8w")
-
-[node name="SpawnArea4" type="Area2D" parent="Rosa"]
-position = Vector2(-780, 430)
-scale = Vector2(1, 1)
-monitorable = false
-script = ExtResource("18_ts26e")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rosa/SpawnArea4"]
-shape = SubResource("CircleShape2D_e7biy")
 
 [node name="Boosts" type="Node2D" parent="."]
 
@@ -604,150 +569,6 @@ position = Vector2(-1072, 400)
 position = Vector2(1712, -1392)
 
 [node name="Walls" type="Node2D" parent="." groups=["Solid", "Wall"]]
-
-[node name="outer walls" type="Node2D" parent="Walls" groups=["Solid"]]
-
-[node name="OutWall1" type="Area2D" parent="Walls/outer walls" groups=["Hitbox"]]
-position = Vector2(-324, -2200)
-collision_layer = 5
-collision_mask = 5
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/outer walls/OutWall1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall1/StaticBody2D"]
-shape = SubResource("RectangleShape2D_otyxk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall1"]
-shape = SubResource("RectangleShape2D_lyh2u")
-
-[node name="OutWall2" type="Area2D" parent="Walls/outer walls" groups=["Hitbox"]]
-position = Vector2(1480, -2604)
-collision_layer = 5
-collision_mask = 5
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/outer walls/OutWall2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall2/StaticBody2D"]
-shape = SubResource("RectangleShape2D_5hjqm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall2"]
-shape = SubResource("RectangleShape2D_vs1p4")
-
-[node name="OutWall3" type="Area2D" parent="Walls/outer walls" groups=["Hitbox"]]
-position = Vector2(2044, -1096)
-rotation = -1.5708
-collision_layer = 5
-collision_mask = 5
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/outer walls/OutWall3"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall3/StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_t5lle")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall3"]
-shape = SubResource("WorldBoundaryShape2D_cotcy")
-
-[node name="OutWall4" type="Area2D" parent="Walls/outer walls" groups=["Hitbox"]]
-position = Vector2(2652, 384)
-collision_layer = 5
-collision_mask = 5
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/outer walls/OutWall4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall4/StaticBody2D"]
-shape = SubResource("RectangleShape2D_jtwxp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall4"]
-shape = SubResource("RectangleShape2D_sf03c")
-
-[node name="OutWall5" type="Area2D" parent="Walls/outer walls" groups=["Hitbox"]]
-position = Vector2(2088, 1872)
-collision_layer = 5
-collision_mask = 5
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/outer walls/OutWall5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall5/StaticBody2D"]
-shape = SubResource("RectangleShape2D_c1k3u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall5"]
-shape = SubResource("RectangleShape2D_7qral")
-
-[node name="OutWall6" type="Area2D" parent="Walls/outer walls" groups=["Hitbox"]]
-position = Vector2(0, 1848)
-collision_layer = 5
-collision_mask = 5
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/outer walls/OutWall6"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall6/StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_rof08")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall6"]
-shape = SubResource("WorldBoundaryShape2D_cotcy")
-
-[node name="OutWall7" type="Area2D" parent="Walls/outer walls" groups=["Hitbox"]]
-position = Vector2(-2874, 1872)
-collision_layer = 5
-collision_mask = 5
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/outer walls/OutWall7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall7/StaticBody2D"]
-shape = SubResource("RectangleShape2D_w024e")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall7"]
-shape = SubResource("RectangleShape2D_hru6q")
-
-[node name="OutWall8" type="Area2D" parent="Walls/outer walls" groups=["Hitbox"]]
-position = Vector2(-2832, 2)
-collision_layer = 5
-collision_mask = 5
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/outer walls/OutWall8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall8/StaticBody2D"]
-position = Vector2(-88, 168)
-shape = SubResource("RectangleShape2D_tl13c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall8"]
-shape = SubResource("RectangleShape2D_a1jmu")
-
-[node name="OutWall9" type="Area2D" parent="Walls/outer walls" groups=["Hitbox"]]
-position = Vector2(-2724, -1080)
-rotation = 1.5708
-collision_layer = 5
-collision_mask = 5
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/outer walls/OutWall9"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall9/StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_o753c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall9"]
-shape = SubResource("WorldBoundaryShape2D_cotcy")
-
-[node name="OutWall10" type="Area2D" parent="Walls/outer walls" groups=["Hitbox"]]
-position = Vector2(-2724, -1880)
-rotation = 3.14159
-collision_layer = 5
-collision_mask = 5
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/outer walls/OutWall10"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall10/StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_qhivg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/outer walls/OutWall10"]
-shape = SubResource("WorldBoundaryShape2D_73ec7")
 
 [node name="main walls" type="Node2D" parent="Walls" groups=["Solid"]]
 
@@ -1064,14 +885,6 @@ shape = SubResource("RectangleShape2D_4idvu")
 [connection signal="area_exited" from="ForestAreaTrigger" to="ForestAreaTrigger" method="_on_area_exited"]
 [connection signal="area_entered" from="CaveAreaTrigger" to="CaveAreaTrigger" method="_on_area_entered"]
 [connection signal="area_exited" from="CaveAreaTrigger" to="CaveAreaTrigger" method="_on_area_exited"]
-[connection signal="area_entered" from="Rosa/SpawnArea1" to="Rosa/SpawnArea1" method="_on_area_entered"]
-[connection signal="area_exited" from="Rosa/SpawnArea1" to="Rosa/SpawnArea1" method="_on_area_exited"]
-[connection signal="area_entered" from="Rosa/SpawnArea2" to="Rosa/SpawnArea2" method="_on_area_entered"]
-[connection signal="area_exited" from="Rosa/SpawnArea2" to="Rosa/SpawnArea2" method="_on_area_exited"]
-[connection signal="area_entered" from="Rosa/SpawnArea3" to="Rosa/SpawnArea3" method="_on_area_entered"]
-[connection signal="area_exited" from="Rosa/SpawnArea3" to="Rosa/SpawnArea3" method="_on_area_exited"]
-[connection signal="area_entered" from="Rosa/SpawnArea4" to="Rosa/SpawnArea4" method="_on_area_entered"]
-[connection signal="area_exited" from="Rosa/SpawnArea4" to="Rosa/SpawnArea4" method="_on_area_exited"]
 [connection signal="area_entered" from="HordeTrigger1" to="HordeTrigger1" method="playercollide"]
 [connection signal="area_entered" from="ArrowPassage" to="." method="_on_arrow_passage_area_entered"]
 [connection signal="area_exited" from="ArrowPassage" to="." method="_on_arrow_passage_area_exited"]

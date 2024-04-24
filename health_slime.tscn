@@ -68,6 +68,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_tuyrw"]
 
 [node name="HealthSlime" type="CharacterBody2D"]
+scale = Vector2(0.7, 0.7)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_f6oej")
