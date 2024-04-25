@@ -142,12 +142,13 @@ sprite_frames = SubResource("SpriteFrames_p0bl7")
 animation = &"idle_L"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.7, 0.7)
 shape = SubResource("CapsuleShape2D_2kir3")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2(0.8, 0.8)
 shape = SubResource("CapsuleShape2D_igh4x")
 
 [node name="detectionrange" type="Area2D" parent="."]

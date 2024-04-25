@@ -95,6 +95,8 @@ func _on_tree_exiting():
 
 func _physics_process(delta):
 	relativeposition = target.position - position
+	if sqrt(relativeposition.x*relativeposition.x+relativeposition.y*relativeposition.y) >= 750:
+		queue_free()
 	match currState:
 		archer.MOVE:
 			self.velocity = position.direction_to(target.position) * spd
