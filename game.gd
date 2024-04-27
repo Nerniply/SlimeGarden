@@ -60,26 +60,6 @@ func setState(newState: int):
 func _ready():
 	pass
 
-
-func _on_forest_button_pressed():
-	currState += 1
-	$ForestButton.queue_free()
-	ArrowEventTrigger = true
-	$Rosa.maxhp -= 5
-
-func _on_marsh_button_pressed():
-	currState += 1
-	$MarshButton.queue_free()
-	$Rosa.maxhp -= 5
-
-func _on_cave_button_pressed():
-	currState += 1
-	$CaveButton.queue_free()
-	add_child(load("res://pyro_event.tscn").instantiate())
-	add_child(load("res://pyro_event.tscn").instantiate())
-	add_child(load("res://pyro_event.tscn").instantiate())
-	$Rosa.maxhp -= 5
-
 func _on_arrow_passage_area_entered(area):
 	if area.get_parent() is Player:
 		ArrowPassageTrigger = true
@@ -153,9 +133,28 @@ func _physics_process(delta):
 			maxpyro = 4
 			maxknight = 1
 
+func _on_forest_trigger_area_entered(area):
+	if area.get_parent() is Player:
+		currState += 1
+		ArrowEventTrigger = true
+		$Rosa.maxhp -= 5
+		$Forest.queue_free()
+		$Walls/Forest/StaticBody2D/TempTreeWall.queue_free()
+		$Dirt.queue_free()
 
+func _on_cave_trigger_area_entered(area):
+	if area.get_parent() is Player:
+		currState += 1
+		add_child(load("res://pyro_event.tscn").instantiate())
+		add_child(load("res://pyro_event.tscn").instantiate())
+		add_child(load("res://pyro_event.tscn").instantiate())
+		$Rosa.maxhp -= 5
+		$Walls/TempCaveBridge.queue_free()
+		$SunStone.queue_free()
+		$ExitBridge.show()
 
-
-
-
-
+func _on_area_2d_area_entered(area):
+	if area.get_parent() is Player:
+		currState += 1
+		$Rosa.maxhp -= 5
+		$Water.queue_free()

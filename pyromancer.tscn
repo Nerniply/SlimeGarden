@@ -132,9 +132,9 @@ animation = &"cast_L"
 scale = Vector2(0.6, 0.6)
 shape = SubResource("CapsuleShape2D_4j38q")
 
-[node name="hitbox" type="Area2D" parent="." groups=["Hitbox"]]
+[node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CapsuleShape2D_1fgym")
 
@@ -146,6 +146,6 @@ shape = SubResource("CircleShape2D_w3elk")
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
-[connection signal="area_entered" from="hitbox" to="." method="playercollide"]
+[connection signal="area_entered" from="Hitbox" to="." method="playercollide"]
 [connection signal="area_entered" from="detectionrange" to="." method="startCasting"]
 [connection signal="area_exited" from="detectionrange" to="." method="startMoving"]

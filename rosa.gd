@@ -47,6 +47,20 @@ func collide(area: Area2D):
 			pacman = true
 			pactimer = 0
 	#$healthtxt.text = str(curhp)
+	if area.is_in_group("AscentTrigger"):
+		print("Ascended")
+		self.set_collision_layer(144)
+		self.set_collision_mask(144)
+		z_index = 3
+		$Hitbox.set_collision_layer(144)
+		$Hitbox.set_collision_mask(176)
+	if area.is_in_group("DescentTrigger"):
+		print("Descended")
+		self.set_collision_layer(9)
+		self.set_collision_mask(9)
+		z_index = 0
+		$Hitbox.set_collision_layer(9)
+		$Hitbox.set_collision_mask(11)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

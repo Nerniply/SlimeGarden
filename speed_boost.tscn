@@ -11,6 +11,8 @@ script = ExtResource("2_gh3bl")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Hitbox"]]
 scale = Vector2(2, 1)
+collision_layer = 17
+collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_m860o")

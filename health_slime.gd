@@ -13,6 +13,18 @@ func _ready():
 func playercollide(area: Area2D):
 	if (area.get_parent() is Player):
 		queue_free()
+	if area.is_in_group("AscentTrigger"):
+		$Hitbox.set_collision_layer(16)
+		$Hitbox.set_collision_mask(16)
+		self.z_index=3
+		self.set_collision_layer(16)
+		self.set_collision_mask(16)
+	if area.is_in_group("DescentTrigger"):
+		self.set_collision_layer(1)
+		self.set_collision_mask(1)
+		self.z_index=0
+		$Hitbox.set_collision_layer(1)
+		$Hitbox.set_collision_mask(1)
 
 func _physics_process(delta):
 	relativeposition = target.position - position
