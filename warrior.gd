@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 @onready var target = get_parent().get_node("Rosa")
-const spd = 140
+var spd = 220
 const hp = 1
 var relativeposition = Vector2()
+var distancecalc
 #var spawnhelper
 #var northhelper
 #var easthelper
@@ -43,7 +44,8 @@ func _ready():
 			#var nangle = acos(-(northhelper + 10)/735) # angle of 735 radius circle intersecting north wall
 			#position = spawnhelper + Vector2(sqrt(735*735-(northhelper+10)*(northhelper+10)), northhelper + 10).rotated(randf_range(0, 2*PI-(2*nangle)))
 		#else: 
-	position = target.position + Vector2(735, 0).rotated(randf_range(0, 2*PI))
+	position = target.position + Vector2(get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x), get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y)).rotated(randf_range(0, 2*PI))
+	#position = target.position + Vector2(735,0).rotated(randf_range(0, 2*PI))
 
 func gethp():
 	return hp
@@ -72,8 +74,9 @@ func _on_tree_exiting():
 	get_parent().currwarriors -= 1
 
 func _physics_process(delta):
+	distancecalc = sqrt((get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x))*(get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x))+(get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y))*(get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y)))
 	relativeposition = target.position - position
-	if sqrt(relativeposition.x*relativeposition.x+relativeposition.y*relativeposition.y) >= 750:
+	if sqrt(relativeposition.x*relativeposition.x+relativeposition.y*relativeposition.y) >= distancecalc + 30:
 		queue_free()
 	if relativeposition.x > 0:
 		$AnimatedSprite2D.flip_h = true

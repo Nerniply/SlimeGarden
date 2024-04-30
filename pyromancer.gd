@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var target = get_parent().get_node("Rosa")
-const spd = 100
+var spd = 100
 const hp = 1
 var inRange = false # determines if player is close enough to shoot at
 var timervar = 0 # keps track of frames and allows state timing
@@ -10,7 +10,9 @@ signal stateChanged(newState)
 var relativeposition = Vector2()
 
 func _ready():
-	position = target.position + Vector2(735, 0).rotated(randf_range(0, 2*PI))
+	# Spawning distance - accounts for viewport size and camera zoom
+	position = target.position + Vector2(get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x), get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y)).rotated(randf_range(0, 2*PI))
+	#position = target.position + Vector2(735, 0).rotated(randf_range(0, 2*PI))
 
 enum pyro {
 	MOVE,

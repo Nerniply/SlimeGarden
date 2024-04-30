@@ -19,7 +19,8 @@ func playercollide(area: Area2D):
 func _physics_process(delta):
 	#self.target = get_parent().target
 	if get_parent().triggered:
-		spd = 140
+		spd = 220
+		self.show()
 	relativeposition = target.position - global_position
 	if relativeposition.x > 0:
 		$AnimatedSprite2D.flip_h = true

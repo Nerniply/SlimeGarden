@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://dgr3exlo8chvl"]
+
+[ext_resource type="Script" path="res://animated_speed_boost.gd" id="1_52b2m"]
+[ext_resource type="Texture2D" uid="uid://c6osw35gothny" path="res://Assets/Speedy-Fruit-Sheet-export.png" id="1_wqmgg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrhuw"]
+atlas = ExtResource("1_wqmgg")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_055s8"]
+atlas = ExtResource("1_wqmgg")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kcm6"]
+atlas = ExtResource("1_wqmgg")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkjqj"]
+atlas = ExtResource("1_wqmgg")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry018"]
+atlas = ExtResource("1_wqmgg")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k4qu"]
+atlas = ExtResource("1_wqmgg")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ftp5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrhuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_055s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kcm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkjqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry018")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k4qu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wb3fh"]
+
+[node name="AnimatedSpeedBoost" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_7ftp5")
+script = ExtResource("1_52b2m")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_wb3fh")

@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://dutsim3seyf3m"]
+
+[ext_resource type="Texture2D" uid="uid://dlj6220de66w1" path="res://Assets/Pacmany-Fruity-Sheet.png" id="1_esol1"]
+[ext_resource type="Script" path="res://animated_pac_man.gd" id="2_k4nkn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd5uy"]
+atlas = ExtResource("1_esol1")
+region = Rect2(0, 0, 42, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oogf6"]
+atlas = ExtResource("1_esol1")
+region = Rect2(42, 0, 42, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uou5l"]
+atlas = ExtResource("1_esol1")
+region = Rect2(84, 0, 42, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81d51"]
+atlas = ExtResource("1_esol1")
+region = Rect2(126, 0, 42, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yum8i"]
+atlas = ExtResource("1_esol1")
+region = Rect2(168, 0, 42, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_387rm"]
+atlas = ExtResource("1_esol1")
+region = Rect2(210, 0, 42, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprph"]
+atlas = ExtResource("1_esol1")
+region = Rect2(252, 0, 42, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n2fr5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd5uy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oogf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uou5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81d51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yum8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_387rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprph")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epmpe"]
+
+[node name="AnimatedPacMan" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_n2fr5")
+script = ExtResource("2_k4nkn")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_epmpe")
+
+[connection signal="area_entered" from="Area2D" to="." method="collide"]

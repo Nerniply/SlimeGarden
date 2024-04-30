@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://byo0mo0d6jul0"]
+
+[ext_resource type="Texture2D" uid="uid://c3avloc1i6elc" path="res://Assets/Healing-Fruity-Sheet-export.png" id="1_3tue7"]
+[ext_resource type="Script" path="res://animated_full_heal.gd" id="2_xs114"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kadv6"]
+atlas = ExtResource("1_3tue7")
+region = Rect2(0, 0, 47, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jg6s"]
+atlas = ExtResource("1_3tue7")
+region = Rect2(47, 0, 47, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4w3l"]
+atlas = ExtResource("1_3tue7")
+region = Rect2(94, 0, 47, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2k2q"]
+atlas = ExtResource("1_3tue7")
+region = Rect2(141, 0, 47, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42c5c"]
+atlas = ExtResource("1_3tue7")
+region = Rect2(188, 0, 47, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxo31"]
+atlas = ExtResource("1_3tue7")
+region = Rect2(235, 0, 47, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_70lho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kadv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jg6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4w3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2k2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42c5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxo31")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k5jvv"]
+
+[node name="AnimatedFullHeal" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_70lho")
+script = ExtResource("2_xs114")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_k5jvv")
+
+[connection signal="area_entered" from="Area2D" to="." method="collide"]

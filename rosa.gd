@@ -33,7 +33,7 @@ func collide(area: Area2D):
 				#print(curhp)
 				drophp(enemyhp)
 			else:
-				get_tree().change_scene_to_file("res://game.tscn")
+				get_tree().change_scene_to_file("res://game_over.tscn")
 		if (area.get_parent() is Health) and curhp < maxhp:
 			curhp += 1
 			#print(curhp)
@@ -61,6 +61,8 @@ func collide(area: Area2D):
 		z_index = 0
 		$Hitbox.set_collision_layer(9)
 		$Hitbox.set_collision_mask(11)
+	if area.is_in_group("Death"):
+		get_tree().change_scene_to_file("res://game_over.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -70,14 +72,13 @@ func _physics_process(delta):
 	if curhp > maxhp:
 		curhp = maxhp
 	
-	if spdup and spduptimer < 600:
+	if spdup and spduptimer < 180:
 		spduptimer += 1
-		if spduptimer == 600:
+		if spduptimer == 180:
 			spd /= 2
-	else:
-		spdup = false
+	else: spdup = false
 
-	if pacman and pactimer < 600:
+	if pacman and pactimer < 120:
 		pactimer += 1
 	else: pacman = false
 	

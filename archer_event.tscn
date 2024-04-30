@@ -3,18 +3,20 @@
 [ext_resource type="Script" path="res://archer_event.gd" id="1_qkq5y"]
 [ext_resource type="Texture2D" uid="uid://b5ku86biucpeg" path="res://Assets/Enemies/NernArrow2.png" id="2_jtiin"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_d8uy7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlr2w"]
+size = Vector2(26, 4)
 
 [node name="ArcherEvent" type="Node2D" groups=["Enemy"]]
 script = ExtResource("1_qkq5y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
 texture = ExtResource("2_jtiin")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Hitbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_d8uy7")
+shape = SubResource("RectangleShape2D_jlr2w")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

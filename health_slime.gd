@@ -1,8 +1,8 @@
 extends CharacterBody2D
 class_name Health
 
-
 @onready var target = get_parent().get_node("Rosa")
+@onready var lifetimer = 0
 var spd = 50
 var relativeposition = Vector2()
 
@@ -35,3 +35,6 @@ func _physics_process(delta):
 	$AnimatedSprite2D.play("move_L")
 	velocity = position.direction_to(target.position) * spd
 	move_and_slide()
+	if lifetimer == 600:
+		queue_free()
+	else: lifetimer += 1

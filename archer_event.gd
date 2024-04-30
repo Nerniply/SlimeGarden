@@ -9,8 +9,9 @@ var targetDirection
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#print(dir)
-	var spawnY = randf_range(player.global_position.y - 450, player.global_position.y + 450) # based on screen size
-	var spawnX = 650 # based on screen size
+	var screenheight = get_viewport().size.y/(2*player.get_node("PlayerCam").get_zoom().y)
+	var spawnY = player.global_position.y + randi_range(-screenheight,screenheight) # based on screen size
+	var spawnX = get_viewport().size.x/(2*player.get_node("PlayerCam").get_zoom().x) # based on viewport and zoom
 	self.global_position = Vector2(player.global_position.x - (dir * spawnX), spawnY)
 	var endPos = Vector2(player.global_position.x + (dir * spawnX), spawnY)
 	look_at(endPos)
