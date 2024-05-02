@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var target = get_parent().get_node("Rosa")
-var spd = 220
+var spd = 205
 const hp = 1
 var relativeposition = Vector2()
 var distancecalc

@@ -313,6 +313,7 @@ animations = [{
 scale = Vector2(1.5, 1.5)
 collision_layer = 258
 collision_mask = 258
+motion_mode = 1
 script = ExtResource("1_63f1y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

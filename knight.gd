@@ -46,9 +46,9 @@ func collide(area: Area2D):
 		if area.get_parent() is Player:
 			queue_free()
 
-func exit(area: Area2D):
-	if area.is_in_group("SlowTrigger"):
-		chargespd *= 2
+#func exit(area: Area2D):
+	#if area.is_in_group("SlowTrigger"):
+		#chargespd *= 2
 
 func _on_tree_entered():
 	get_parent().currknight += 1

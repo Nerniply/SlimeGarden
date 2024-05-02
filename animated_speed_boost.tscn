@@ -64,3 +64,5 @@ script = ExtResource("1_52b2m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_wb3fh")
+
+[connection signal="area_entered" from="Area2D" to="." method="collide"]

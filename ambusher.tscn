@@ -46,6 +46,7 @@ animations = [{
 [node name="Ambusher" type="CharacterBody2D" groups=["Enemy", "Grounded"]]
 collision_layer = 257
 collision_mask = 257
+motion_mode = 1
 script = ExtResource("1_ou2sd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

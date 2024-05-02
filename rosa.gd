@@ -10,6 +10,8 @@ var spdup
 var spduptimer
 var pacman
 var pactimer
+var hpregen
+var hpregentimer
 
 func SetMaxHP(newhp):
 	maxhp = newhp
@@ -38,7 +40,8 @@ func collide(area: Area2D):
 			curhp += 1
 			#print(curhp)
 		if (area.get_parent() is FullHeal):
-			curhp = maxhp
+			hpregen = true
+			hpregentimer = 0
 		if (area.get_parent() is SpeedBoost):
 			spdup = true
 			spduptimer = 0
@@ -48,14 +51,14 @@ func collide(area: Area2D):
 			pactimer = 0
 	#$healthtxt.text = str(curhp)
 	if area.is_in_group("AscentTrigger"):
-		print("Ascended")
+		#print("Ascended")
 		self.set_collision_layer(144)
 		self.set_collision_mask(144)
 		z_index = 3
 		$Hitbox.set_collision_layer(144)
 		$Hitbox.set_collision_mask(176)
 	if area.is_in_group("DescentTrigger"):
-		print("Descended")
+		#print("Descended")
 		self.set_collision_layer(9)
 		self.set_collision_mask(9)
 		z_index = 0
@@ -63,6 +66,7 @@ func collide(area: Area2D):
 		$Hitbox.set_collision_mask(11)
 	if area.is_in_group("Death"):
 		get_tree().change_scene_to_file("res://game_over.tscn")
+		
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -77,10 +81,16 @@ func _physics_process(delta):
 		if spduptimer == 180:
 			spd /= 2
 	else: spdup = false
-
+	
 	if pacman and pactimer < 120:
 		pactimer += 1
 	else: pacman = false
+	
+	if hpregen and hpregentimer < 300:
+		if (hpregentimer + 1) % 60 == 0 and curhp != maxhp:
+			curhp += 1
+		hpregentimer += 1
+	else: hpregen = false
 	
 	input = Vector2(0,0)
 	if Input.is_key_pressed(KEY_D):

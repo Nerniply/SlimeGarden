@@ -1,10 +1,13 @@
 extends Node2D
 @onready var currState = 1
 
+var ArrowsReady = true
 var ArrowEventTrigger = false
 var ArrowPassageTrigger = false
 var ArrowTimer = 0
 var ArrowDir = 1
+var PyroEventTrigger = false
+var PyroEventTimer = 0
 var currwarriors = 0
 var maxwarriors = 0
 var currarchers = 0
@@ -50,6 +53,7 @@ var maxknight = 0
 #}
 
 
+
 func setState(newState: int):
 	if newState == currState:
 		return
@@ -58,6 +62,7 @@ func setState(newState: int):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#$CanvasLayer/HealthHearts.updateMaxHP(10)
 	pass
 
 func _on_arrow_passage_area_entered(area):
@@ -80,22 +85,26 @@ func _on_knight_spawn_pressed():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	#get_spawn()
+	$CanvasLayer/HealthHearts.updateCurHP($Rosa.curhp)
+	#$CanvasLayer/healthtxt.text = str($Rosa.curhp)
+	#$CanvasLayer/healthbar.max_value = $Rosa.maxhp
+	#$CanvasLayer/healthbar.value = $Rosa.curhp
 	
 	
-	$CanvasLayer/healthtxt.text = str($Rosa.curhp)
-	$CanvasLayer/healthbar.max_value = $Rosa.maxhp
-	$CanvasLayer/healthbar.value = $Rosa.curhp
 	
-	
-	# triggered on phase change
-	if ArrowEventTrigger:
+	# triggered on forest phase change and forever after
+	if ArrowEventTrigger and ArrowsReady:
 		if ArrowTimer % 5 == 0:
 			add_child(load("res://archer_event.tscn").instantiate())
 			ArrowDir *= -1
 		if ArrowTimer == 180:
 			ArrowTimer = -1
-			ArrowEventTrigger = false
+			ArrowsReady = false
+		ArrowTimer += 1
+	elif !ArrowsReady:
+		if ArrowTimer == 900:
+			ArrowTimer = -1
+			ArrowsReady = true
 		ArrowTimer += 1
 	
 	# triggered on area entered
@@ -105,6 +114,15 @@ func _physics_process(delta):
 			ArrowDir *= -1
 			ArrowTimer = 0
 		ArrowTimer += 1
+	
+	if PyroEventTrigger:
+		if PyroEventTimer == 1200:
+			add_child(load("res://pyro_event.tscn").instantiate())
+			add_child(load("res://pyro_event.tscn").instantiate())
+			add_child(load("res://pyro_event.tscn").instantiate())
+			PyroEventTimer = -1
+		PyroEventTimer += 1
+	
 	
 	#checks how many of each enemy exist and spawns one if there are less then maximum
 	if currwarriors < maxwarriors:
@@ -138,6 +156,7 @@ func _on_forest_trigger_area_entered(area):
 		currState += 1
 		ArrowEventTrigger = true
 		$Rosa.maxhp -= 5
+		$CanvasLayer/HealthHearts.updateMaxHP($Rosa.maxhp)
 		$Forest.queue_free()
 		$Walls/Forest/StaticBody2D/TempTreeWall.queue_free()
 		$Dirt.queue_free()
@@ -148,7 +167,9 @@ func _on_cave_trigger_area_entered(area):
 		add_child(load("res://pyro_event.tscn").instantiate())
 		add_child(load("res://pyro_event.tscn").instantiate())
 		add_child(load("res://pyro_event.tscn").instantiate())
+		PyroEventTimer = true
 		$Rosa.maxhp -= 5
+		$CanvasLayer/HealthHearts.updateMaxHP($Rosa.maxhp)
 		$Walls/TempCaveBridge.queue_free()
 		$SunStone.queue_free()
 		$ExitBridge.show()
@@ -157,4 +178,5 @@ func _on_area_2d_area_entered(area):
 	if area.get_parent() is Player:
 		currState += 1
 		$Rosa.maxhp -= 5
+		$CanvasLayer/HealthHearts.updateMaxHP($Rosa.maxhp)
 		$Water.queue_free()

@@ -19,7 +19,7 @@ func playercollide(area: Area2D):
 func _physics_process(delta):
 	#self.target = get_parent().target
 	if get_parent().triggered:
-		spd = 220
+		spd = 205
 		self.show()
 	relativeposition = target.position - global_position
 	if relativeposition.x > 0:

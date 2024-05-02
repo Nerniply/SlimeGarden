@@ -1,9 +1,11 @@
-[gd_scene load_steps=346 format=3 uid="uid://bjuajrjdbccod"]
+[gd_scene load_steps=348 format=3 uid="uid://bjuajrjdbccod"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_dfy8r"]
 [ext_resource type="PackedScene" uid="uid://dcsmkol37yt11" path="res://rosa.tscn" id="2_1lsgy"]
 [ext_resource type="Texture2D" uid="uid://cmyhrlfsngvux" path="res://Assets/Overworldv3.png" id="2_7pw7w"]
 [ext_resource type="Texture2D" uid="uid://cm1xfauhms6xr" path="res://Assets/Water.png" id="2_d2xld"]
+[ext_resource type="Script" path="res://HealthHearts.gd" id="2_ftx2r"]
+[ext_resource type="PackedScene" uid="uid://dkiujq3w87sbw" path="res://heart_gui.tscn" id="3_dx7vn"]
 [ext_resource type="Texture2D" uid="uid://ib8tdmio2qay" path="res://Assets/Marsh-temp.png" id="3_nti6x"]
 [ext_resource type="Texture2D" uid="uid://dsyvfat234bok" path="res://Assets/Forest-temp.png" id="3_v6br1"]
 [ext_resource type="Texture2D" uid="uid://ca3yuy8tvaaus" path="res://Assets/Dirt.png" id="3_xrgpd"]
@@ -29,6 +31,7 @@
 [ext_resource type="Script" path="res://HordeTrigger2.gd" id="27_vuicx"]
 [ext_resource type="Script" path="res://HordeTrigger3.gd" id="28_3wmve"]
 [ext_resource type="Script" path="res://SlowingAreas.gd" id="29_vv6gl"]
+[ext_resource type="Script" path="res://SlimePond.gd" id="32_vmf7p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lws47"]
 
@@ -808,7 +811,7 @@ size = Vector2(36, 78)
 size = Vector2(64, 560)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57i42"]
-size = Vector2(64, 174)
+size = Vector2(104, 174)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hawst"]
 size = Vector2(64, 40)
@@ -874,9 +877,6 @@ size = Vector2(112, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1vr5"]
 size = Vector2(14, 10)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5j8wv"]
-radius = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jta8l"]
 radius = 8.0
@@ -1145,6 +1145,7 @@ script = ExtResource("1_dfy8r")
 layer = 2
 
 [node name="healthtxt" type="Label" parent="CanvasLayer"]
+visible = false
 offset_left = 96.0
 offset_top = 24.0
 offset_right = 144.0
@@ -1152,6 +1153,7 @@ offset_bottom = 47.0
 horizontal_alignment = 1
 
 [node name="healthbar" type="ProgressBar" parent="CanvasLayer"]
+visible = false
 top_level = true
 anchors_preset = -1
 anchor_top = -0.00416667
@@ -1192,6 +1194,82 @@ text = "Spawn Pyromancer"
 layout_mode = 2
 text = "Spawn Knight"
 
+[node name="HealthHearts" type="VSplitContainer" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 336.0
+offset_bottom = 80.0
+theme_override_constants/separation = 0
+script = ExtResource("2_ftx2r")
+
+[node name="Row1" type="HBoxContainer" parent="CanvasLayer/HealthHearts"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HeartGUI" parent="CanvasLayer/HealthHearts/Row1" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI2" parent="CanvasLayer/HealthHearts/Row1" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI3" parent="CanvasLayer/HealthHearts/Row1" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI4" parent="CanvasLayer/HealthHearts/Row1" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI5" parent="CanvasLayer/HealthHearts/Row1" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI6" parent="CanvasLayer/HealthHearts/Row1" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI7" parent="CanvasLayer/HealthHearts/Row1" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI8" parent="CanvasLayer/HealthHearts/Row1" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI9" parent="CanvasLayer/HealthHearts/Row1" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI10" parent="CanvasLayer/HealthHearts/Row1" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="Row2" type="HBoxContainer" parent="CanvasLayer/HealthHearts"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HeartGUI" parent="CanvasLayer/HealthHearts/Row2" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI2" parent="CanvasLayer/HealthHearts/Row2" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI3" parent="CanvasLayer/HealthHearts/Row2" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI4" parent="CanvasLayer/HealthHearts/Row2" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI5" parent="CanvasLayer/HealthHearts/Row2" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI6" parent="CanvasLayer/HealthHearts/Row2" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI7" parent="CanvasLayer/HealthHearts/Row2" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI8" parent="CanvasLayer/HealthHearts/Row2" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI9" parent="CanvasLayer/HealthHearts/Row2" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
+[node name="HeartGUI10" parent="CanvasLayer/HealthHearts/Row2" instance=ExtResource("3_dx7vn")]
+layout_mode = 2
+
 [node name="Field" type="Sprite2D" parent="."]
 texture = ExtResource("2_7pw7w")
 
@@ -1227,7 +1305,7 @@ position = Vector2(29.5, -956)
 texture = ExtResource("9_kqsav")
 
 [node name="Rosa" parent="." instance=ExtResource("2_1lsgy")]
-position = Vector2(40, 1440)
+position = Vector2(-0.00012207, -728)
 
 [node name="PlayerCam" type="Camera2D" parent="Rosa"]
 
@@ -1274,7 +1352,7 @@ libraries = {
 "": SubResource("AnimationLibrary_7e2y7")
 }
 
-[node name="MarshAreaTrigger" type="Area2D" parent="."]
+[node name="MarshAreaTrigger" type="Area2D" parent="." groups=["Small"]]
 visible = false
 position = Vector2(-2084, -1480)
 script = ExtResource("8_fqqfg")
@@ -1290,7 +1368,7 @@ libraries = {
 "": SubResource("AnimationLibrary_nukm4")
 }
 
-[node name="ForestAreaTrigger" type="Area2D" parent="."]
+[node name="ForestAreaTrigger" type="Area2D" parent="." groups=["Small"]]
 visible = false
 position = Vector2(0, 1480)
 script = ExtResource("8_eva1f")
@@ -1306,7 +1384,7 @@ libraries = {
 "": SubResource("AnimationLibrary_r5vjr")
 }
 
-[node name="CaveAreaTrigger" type="Area2D" parent="."]
+[node name="CaveAreaTrigger" type="Area2D" parent="." groups=["Small"]]
 visible = false
 position = Vector2(1420, -1480)
 collision_layer = 17
@@ -1699,7 +1777,7 @@ shape = SubResource("RectangleShape2D_4hdlm")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/Bushes/StaticBody2D"]
 position = Vector2(1361, -674)
-polygon = PackedVector2Array(-128, -32, -72, 40, 24, 48, 32, 86, 96, 86, 144, 72, 144, 56, 88, 0, 128, -32)
+polygon = PackedVector2Array(-128, -32, -72, 40, 24, 48, 32, 86, 96, 86, 144, 72, 144, 56, 88, 0, 128, -32, 88, -32, 80, -48, -96, -48, -104, -32)
 
 [node name="CollisionShape2D38" type="CollisionShape2D" parent="Walls/Bushes/StaticBody2D"]
 position = Vector2(1069, -658)
@@ -2038,6 +2116,200 @@ shape = SubResource("RectangleShape2D_4hdlm")
 position = Vector2(2185, 990)
 shape = SubResource("RectangleShape2D_4hdlm")
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/Bushes"]
+position = Vector2(1361, -674)
+polygon = PackedVector2Array(-128, -32, -72, 40, 24, 48, 32, 86, 96, 86, 144, 72, 144, 56, 88, 0, 128, -32, 88, -32, 80, -48, -96, -48, -104, -32)
+
+[node name="CollisionShape2D38" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1069, -658)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bleyx")
+
+[node name="CollisionShape2D39" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1762, -692)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bleyx")
+
+[node name="CollisionShape2D40" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(2015, -681)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bleyx")
+
+[node name="CollisionShape2D41" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1832, -319)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bleyx")
+
+[node name="CollisionShape2D42" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1277, -214)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bleyx")
+
+[node name="CollisionShape2D43" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1762, -702)
+shape = SubResource("RectangleShape2D_tsmrh")
+
+[node name="CollisionShape2D44" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(2009, -702)
+shape = SubResource("RectangleShape2D_52l5f")
+
+[node name="CollisionShape2D45" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1076, -702)
+shape = SubResource("RectangleShape2D_k1cmu")
+
+[node name="CollisionShape2D46" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1054, -165)
+shape = SubResource("RectangleShape2D_svi0r")
+
+[node name="CollisionShape2D47" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1309, -165)
+shape = SubResource("RectangleShape2D_vf2io")
+
+[node name="CollisionShape2D48" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1761, -165)
+shape = SubResource("RectangleShape2D_l33pg")
+
+[node name="CollisionShape2D49" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(2034, -165)
+shape = SubResource("RectangleShape2D_6ijjs")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls/Bushes"]
+position = Vector2(1189, -346)
+polygon = PackedVector2Array(-64, -48, -88, -32, -88, -16, -32, 32, 32, 32, 80, 16, 80, 0, 16, -48)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Walls/Bushes"]
+position = Vector2(1521, -362)
+polygon = PackedVector2Array(-104, 8, -80, 32, -16, 32, 8, 56, 64, 56, 112, 40, 112, 16, 72, -16, 120, -16, 120, -40, 96, -56, 16, -56, -24, -24, -88, -24, -104, -8)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Walls/Bushes"]
+position = Vector2(1937, -450)
+polygon = PackedVector2Array(-120, -48, -104, -32, -32, -32, -24, -16, -104, 56, -104, 72, -80, 88, -32, 88, 16, 72, 24, 32, 64, 32, 64, 8, 32, -16, 32, -24, 80, -24, 80, -48, 56, -64, 0, -64, -16, -80, -104, -80, -120, -64)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Walls/Bushes"]
+position = Vector2(1001, -1146)
+polygon = PackedVector2Array(32, 80, 0, 80, -208, -8, -8, -992, 260, -1160, 152, 8)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Walls/Bushes"]
+position = Vector2(2057, -1122)
+polygon = PackedVector2Array(0, 56, 200, 152, 200, -24, -120, -24, -120, -8)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Walls/Bushes"]
+position = Vector2(2041, -746)
+polygon = PackedVector2Array(48, 32, -88, 32, -96, 16, -72, -8, -24, -40, 16, -56, 32, -56, 32, -168, 48, -168, 80, 32)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Walls/Bushes"]
+position = Vector2(1057, -746)
+polygon = PackedVector2Array(-56, 32, 80, 32, 88, 24, 88, 8, 16, -40, -24, -56, -40, -56, -40, -176, -56, -176, -88, 32)
+
+[node name="CollisionShape2D50" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1025, -969)
+shape = SubResource("CircleShape2D_83v2t")
+
+[node name="CollisionShape2D51" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1085, -1008)
+shape = SubResource("CircleShape2D_83v2t")
+
+[node name="CollisionShape2D52" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1026, -1045)
+shape = SubResource("CircleShape2D_83v2t")
+
+[node name="CollisionShape2D53" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1109, -857)
+shape = SubResource("RectangleShape2D_6rbrg")
+
+[node name="CollisionShape2D54" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1078, -1074)
+shape = SubResource("RectangleShape2D_6rbrg")
+
+[node name="CollisionShape2D55" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(2062, -1037)
+shape = SubResource("RectangleShape2D_6rbrg")
+
+[node name="CollisionShape2D56" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1321, -307)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D57" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1197, -223)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D58" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1099, -301)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D59" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1165, -399)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D60" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1067, -477)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D61" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1289, -483)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D62" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1171, -553)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D63" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1393, -559)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D64" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1543, -642)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D65" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1641, -564)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D66" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1851, -641)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D67" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1949, -563)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D68" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1975, -233)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D69" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1667, -234)
+shape = SubResource("CircleShape2D_4oylc")
+
+[node name="CollisionShape2D70" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(193, 822)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2f0h2")
+
+[node name="CollisionShape2D71" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(740, 816)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2f0h2")
+
+[node name="CollisionShape2D72" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(2329, 816)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2f0h2")
+
+[node name="CollisionShape2D73" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(2883, 812)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2f0h2")
+
+[node name="CollisionShape2D74" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1531, 1582)
+shape = SubResource("RectangleShape2D_6rbrg")
+
+[node name="CollisionShape2D75" type="CollisionShape2D" parent="Walls/Bushes"]
+position = Vector2(1577, -884)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_spvrc")
+
 [node name="Area2D38" type="Area2D" parent="Walls" groups=["Hitbox"]]
 position = Vector2(-741, -1088)
 collision_layer = 7
@@ -2091,8 +2363,12 @@ shape = SubResource("RectangleShape2D_tx0df")
 
 [node name="Area2D" type="Area2D" parent="Walls"]
 position = Vector2(1072, -1076)
+collision_layer = 7
+collision_mask = 7
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls/Area2D"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D/StaticBody2D"]
 shape = SubResource("RectangleShape2D_3rcyn")
@@ -3881,11 +4157,11 @@ position = Vector2(633, -287)
 shape = SubResource("RectangleShape2D_swtb6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Forest/StaticBody2D"]
-position = Vector2(441, 136)
+position = Vector2(459, 136)
 shape = SubResource("RectangleShape2D_57i42")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/Forest/StaticBody2D"]
-position = Vector2(634, 136)
+position = Vector2(616, 136)
 shape = SubResource("RectangleShape2D_57i42")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/Forest/StaticBody2D"]
@@ -3984,14 +4260,6 @@ shape = SubResource("RectangleShape2D_6rbrg")
 position = Vector2(35, -2)
 shape = SubResource("RectangleShape2D_6rbrg")
 
-[node name="CollisionShape2D77" type="CollisionShape2D" parent="Walls/Forest/StaticBody2D"]
-position = Vector2(495, 101)
-shape = SubResource("RectangleShape2D_6rbrg")
-
-[node name="CollisionShape2D78" type="CollisionShape2D" parent="Walls/Forest/StaticBody2D"]
-position = Vector2(582, 102)
-shape = SubResource("RectangleShape2D_6rbrg")
-
 [node name="CollisionShape2D79" type="CollisionShape2D" parent="Walls/Forest/StaticBody2D"]
 position = Vector2(343, -587)
 shape = SubResource("RectangleShape2D_6rbrg")
@@ -4076,14 +4344,6 @@ shape = SubResource("RectangleShape2D_d1vr5")
 position = Vector2(-79, -169)
 shape = SubResource("RectangleShape2D_d1vr5")
 
-[node name="CollisionShape2D25" type="CollisionShape2D" parent="Walls/Forest/StaticBody2D"]
-position = Vector2(493, 67)
-shape = SubResource("CircleShape2D_5j8wv")
-
-[node name="CollisionShape2D26" type="CollisionShape2D" parent="Walls/Forest/StaticBody2D"]
-position = Vector2(581, 66)
-shape = SubResource("CircleShape2D_5j8wv")
-
 [node name="CollisionShape2D27" type="CollisionShape2D" parent="Walls/Forest/StaticBody2D"]
 position = Vector2(1060, -496)
 shape = SubResource("CapsuleShape2D_jta8l")
@@ -4101,11 +4361,11 @@ position = Vector2(633, -287)
 shape = SubResource("RectangleShape2D_swtb6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Forest"]
-position = Vector2(441, 136)
+position = Vector2(459, 136)
 shape = SubResource("RectangleShape2D_57i42")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/Forest"]
-position = Vector2(634, 136)
+position = Vector2(616, 136)
 shape = SubResource("RectangleShape2D_57i42")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/Forest"]
@@ -4200,14 +4460,6 @@ shape = SubResource("RectangleShape2D_6rbrg")
 position = Vector2(35, -2)
 shape = SubResource("RectangleShape2D_6rbrg")
 
-[node name="CollisionShape2D77" type="CollisionShape2D" parent="Walls/Forest"]
-position = Vector2(495, 101)
-shape = SubResource("RectangleShape2D_6rbrg")
-
-[node name="CollisionShape2D78" type="CollisionShape2D" parent="Walls/Forest"]
-position = Vector2(582, 102)
-shape = SubResource("RectangleShape2D_6rbrg")
-
 [node name="CollisionShape2D79" type="CollisionShape2D" parent="Walls/Forest"]
 position = Vector2(343, -587)
 shape = SubResource("RectangleShape2D_6rbrg")
@@ -4292,14 +4544,6 @@ shape = SubResource("RectangleShape2D_d1vr5")
 position = Vector2(-79, -169)
 shape = SubResource("RectangleShape2D_d1vr5")
 
-[node name="CollisionShape2D25" type="CollisionShape2D" parent="Walls/Forest"]
-position = Vector2(493, 67)
-shape = SubResource("CircleShape2D_5j8wv")
-
-[node name="CollisionShape2D26" type="CollisionShape2D" parent="Walls/Forest"]
-position = Vector2(581, 66)
-shape = SubResource("CircleShape2D_5j8wv")
-
 [node name="CollisionShape2D27" type="CollisionShape2D" parent="Walls/Forest"]
 position = Vector2(1060, -496)
 shape = SubResource("CapsuleShape2D_jta8l")
@@ -4312,7 +4556,7 @@ shape = SubResource("RectangleShape2D_4po7u")
 position = Vector2(973, -554)
 shape = SubResource("CircleShape2D_5jf1j")
 
-[node name="Village" type="Area2D" parent="Walls"]
+[node name="Village" type="Area2D" parent="Walls" groups=["Solid"]]
 position = Vector2(1392, -432)
 collision_layer = 7
 collision_mask = 7
@@ -4791,7 +5035,7 @@ shape = SubResource("CircleShape2D_m6syo")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/Village"]
 position = Vector2(-432, -592)
-polygon = PackedVector2Array(-48, 48, -16, 48, 48, 16, 80, -24, 80, -32, -48, -32)
+polygon = PackedVector2Array(-192, 104, -16, 48, 48, 16, 80, -24, 80, -32, -168, -32)
 
 [node name="CollisionShape2D42" type="CollisionShape2D" parent="Walls/Village"]
 position = Vector2(-57, 67)
@@ -4926,7 +5170,7 @@ position = Vector2(-368, -590)
 shape = SubResource("CircleShape2D_cci45")
 
 [node name="Marsh" type="Area2D" parent="Walls" groups=["Death"]]
-position = Vector2(-1464, -880)
+position = Vector2(-1464, -884)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls/Marsh"]
 collision_layer = 256
@@ -5579,47 +5823,47 @@ position = Vector2(1465, 2009)
 shape = SubResource("RectangleShape2D_pkj4h")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SlowingAreas"]
-position = Vector2(-420, -488)
+position = Vector2(-420, -492)
 shape = SubResource("RectangleShape2D_e0jv4")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="SlowingAreas"]
-position = Vector2(-664, -176)
+position = Vector2(-664, -180)
 shape = SubResource("RectangleShape2D_xqek3")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="SlowingAreas"]
-position = Vector2(-968, -176)
+position = Vector2(-968, -180)
 shape = SubResource("RectangleShape2D_xqek3")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="SlowingAreas"]
-position = Vector2(-1196, -176)
+position = Vector2(-1196, -180)
 shape = SubResource("RectangleShape2D_hlbxt")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="SlowingAreas"]
-position = Vector2(92, 504)
+position = Vector2(92, 500)
 shape = SubResource("RectangleShape2D_r8o1c")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="SlowingAreas"]
-position = Vector2(-152, 816)
+position = Vector2(-152, 812)
 shape = SubResource("RectangleShape2D_gh7w1")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="SlowingAreas"]
-position = Vector2(-384, 816)
+position = Vector2(-384, 812)
 shape = SubResource("RectangleShape2D_ly5ck")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SlowingAreas"]
-position = Vector2(376, 512)
+position = Vector2(376, 508)
 polygon = PackedVector2Array(144, 448, -344, 448, -344, 160, 104, 160, 104, 120, -176, 120, -176, -176, -344, -176, -344, -280, 40, -280, 40, -328, -344, -328, -344, -496, 144, -496)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="SlowingAreas"]
-position = Vector2(-200, 320)
+position = Vector2(-200, 316)
 polygon = PackedVector2Array(176, 312, -240, 312, -240, -304, 176, -304, 176, -136, -104, -136, -104, -88, 176, -88)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="SlowingAreas"]
-position = Vector2(-136, -512)
+position = Vector2(-136, -516)
 polygon = PackedVector2Array(144, -272, 40, -272, 40, -248, -344, -248, -344, -144, -176, -144, -176, 152, 112, 152, 112, 192, -344, 192, -344, 480, 144, 480)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="SlowingAreas"]
-position = Vector2(-968, -616)
+position = Vector2(-968, -620)
 polygon = PackedVector2Array(-152, -168, 152, -168, 152, -144, 440, -144, 440, 256, -280, 256, -280, -144, -152, -144)
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="SlowingAreas"]
@@ -5633,6 +5877,13 @@ polygon = PackedVector2Array(-40, 48, 16, 56, 24, 0, 48, -8, 48, -40, 40, -56, -
 [node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="SlowingAreas"]
 position = Vector2(1248, 544)
 polygon = PackedVector2Array(-48, -24, 48, -16, 56, 32, 8, 32, -56, 24)
+
+[node name="SlimePond" type="Area2D" parent="."]
+position = Vector2(16, -864)
+script = ExtResource("32_vmf7p")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SlimePond"]
+polygon = PackedVector2Array(-368, 192, -392, 176, -416, 152, -440, 112, -440, -104, -424, -128, -376, -176, -344, -184, 320, -184, 352, -176, 392, -144, 416, -104, 416, 112, 400, 144, 360, 184, 344, 192)
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/WarriorSpawn" to="." method="_on_warrior_spawn_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ArcherSpawn" to="." method="_on_archer_spawn_pressed"]
@@ -5656,3 +5907,5 @@ polygon = PackedVector2Array(-48, -24, 48, -16, 56, 32, 8, 32, -56, 24)
 [connection signal="area_exited" from="ArrowPassage" to="." method="_on_arrow_passage_area_exited"]
 [connection signal="area_entered" from="SlowingAreas" to="SlowingAreas" method="_on_area_entered"]
 [connection signal="area_exited" from="SlowingAreas" to="SlowingAreas" method="_on_area_exited"]
+[connection signal="area_entered" from="SlimePond" to="SlimePond" method="poolentered"]
+[connection signal="area_exited" from="SlimePond" to="SlimePond" method="poolexited"]

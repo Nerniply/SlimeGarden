@@ -137,6 +137,7 @@ animations = [{
 [node name="Archer" type="CharacterBody2D" groups=["Enemy", "Grounded"]]
 collision_layer = 257
 collision_mask = 257
+motion_mode = 1
 script = ExtResource("1_7s73p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
