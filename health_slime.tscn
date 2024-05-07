@@ -138,20 +138,21 @@ animations = [{
 
 [node name="HealthSlime" type="CharacterBody2D" groups=["Grounded"]]
 scale = Vector2(0.7, 0.7)
-collision_layer = 4
-collision_mask = 4
+collision_layer = 1028
+collision_mask = 1028
 motion_mode = 1
 script = ExtResource("1_f6oej")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8mfgg")
-animation = &"spawn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.9, 0.9)
 shape = SubResource("CircleShape2D_u16el")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]
+collision_layer = 1025
+collision_mask = 1025
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_tuyrw")

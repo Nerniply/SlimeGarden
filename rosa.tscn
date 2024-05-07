@@ -1,9 +1,30 @@
-[gd_scene load_steps=20 format=3 uid="uid://dcsmkol37yt11"]
+[gd_scene load_steps=26 format=3 uid="uid://dcsmkol37yt11"]
 
 [ext_resource type="Script" path="res://rosa.gd" id="1_ers3u"]
 [ext_resource type="Texture2D" uid="uid://dqiok02bkpebb" path="res://Assets/Enemies/Slime Garden Pixel Arts-Idle.png" id="2_2w4bk"]
+[ext_resource type="Texture2D" uid="uid://dov3h07ouu8uh" path="res://Assets/Falling-Sheet.png" id="2_yc5ca"]
 [ext_resource type="Texture2D" uid="uid://bjreylowp5sap" path="res://Assets/Enemies/Slime Garden Pixel Arts-Moving R-L.png" id="3_r7pv2"]
 [ext_resource type="Texture2D" uid="uid://8jkgpsc2tyor" path="res://Assets/Enemies/Slime Garden Pixel Arts-Moving L-F.png" id="4_4jo8t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oikec"]
+atlas = ExtResource("2_yc5ca")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp20j"]
+atlas = ExtResource("2_yc5ca")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um7na"]
+atlas = ExtResource("2_yc5ca")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0bj0"]
+atlas = ExtResource("2_yc5ca")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eysg"]
+atlas = ExtResource("2_yc5ca")
+region = Rect2(200, 0, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_28rbb"]
 atlas = ExtResource("2_2w4bk")
@@ -55,6 +76,26 @@ region = Rect2(150, 0, 50, 50)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3sr7h"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oikec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp20j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um7na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0bj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eysg")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_28rbb")
@@ -113,22 +154,22 @@ animations = [{
 
 [node name="Rosa" type="CharacterBody2D" groups=["Grounded", "Player", "Solid"]]
 scale = Vector2(0.8, 0.8)
-collision_layer = 9
-collision_mask = 9
+collision_layer = 521
+collision_mask = 521
 motion_mode = 1
 script = ExtResource("1_ers3u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3sr7h")
-animation = &"move_L"
+animation = &"fall"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_u0x0l")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]
-collision_layer = 9
-collision_mask = 11
+collision_layer = 521
+collision_mask = 523
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 scale = Vector2(1.6, 1.6)

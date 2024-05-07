@@ -20,6 +20,6 @@ func _process(delta):
 		explosions.position = self.position
 		explosions.size = self.size
 		#get_parent().add_child(explosions)
-	elif timervar == 71:
+	elif timervar == 70:
 		queue_free()
 	timervar += 1

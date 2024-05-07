@@ -15,10 +15,9 @@ var targetPosition #
 # Deals damage to the player if the player is in the explosion radius 
 func explode(area: Area2D):
 	if area.get_parent() == self.get_parent().get_node("Fireball"):
-		print("explosion")
 		explosion.position = self.position #
 		#explosion.position = self.position
-		explosion.size = 2.5
+		explosion.size = $AnimatedSprite2D.scale.x
 		get_parent().add_child(explosion)
 
 # Called when the node enters the scene tree for the first time.

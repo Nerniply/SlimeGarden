@@ -10,6 +10,8 @@ signal stateChanged(newState)
 var targetPosition # only updates during windup
 var relativeposition
 var startposition # only updates during windup
+var animation
+var distancecalc
 
 func _ready():
 	# Spawning distance - accounts for viewport size and camera zoom
@@ -55,9 +57,12 @@ func _on_tree_entered():
 
 func _on_tree_exiting():
 	get_parent().currknight -= 1
+	get_parent().knightrespawntimer = 0
 
 func _physics_process(delta):
-	#relativeposition = target.position - position
+	$TargetIndicator.look_at(target.position)
+	
+	
 	match currState:
 		knight.WINDUP:
 			hp = 5
@@ -65,10 +70,7 @@ func _physics_process(delta):
 			targetPosition = target.position
 			startposition = self.position
 			relativeposition = targetPosition - startposition
-			if relativeposition.x > 0:
-				$AnimatedSprite2D.flip_h = true # right
-			else: $AnimatedSprite2D.flip_h = false # left
-			$AnimatedSprite2D.play("windup_L2")
+			animation = "windup_L3"
 			if  timervar == 180:
 				setState(knight.CHARGE)
 				timervar = -1
@@ -76,25 +78,36 @@ func _physics_process(delta):
 		knight.CHARGE:
 			hp = 5
 			chargespd = spd # spd = chargespd
-			if relativeposition.x > 0:
-				$AnimatedSprite2D.flip_h = true # right
-			else: $AnimatedSprite2D.flip_h = false # left
-			$AnimatedSprite2D.play("charge_L2")
+			animation = "charge_L3"
 			velocity = startposition.direction_to(targetPosition) * chargespd # spd
 			move_and_slide()
+			
 		knight.STUN:
 			hp = 0
 			if timervar < 10:
 				chargespd = -(spd/10) # spd = -(chargespd/10)
 			else: chargespd = 0 # spd = 0
-			if relativeposition.x > 0:
-				$AnimatedSprite2D.flip_h = true # right
-			else: $AnimatedSprite2D.flip_h = false # left
-			$AnimatedSprite2D.play("stun_L")
+			animation = "stun_L"
 			velocity = startposition.direction_to(targetPosition) * chargespd # spd
 			move_and_slide()
 			if timervar == 210: # ~3.5 sec
 				setState(knight.WINDUP)
 				timervar = -1
 			timervar += 1
-				
+	
+	if relativeposition.x > 0:
+		$AnimatedSprite2D.flip_h = true # right
+	else: $AnimatedSprite2D.flip_h = false # left
+	$AnimatedSprite2D.play(animation)
+
+func _on_state_changed(newState):
+	if newState == knight.WINDUP:
+		$TargetIndicator.visible = true
+		$TargetIndicator.play("default")
+		relativeposition = targetPosition - startposition
+		distancecalc = sqrt((get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x))*(get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x))+(get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y))*(get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y)))
+		if sqrt(relativeposition.x*relativeposition.x+relativeposition.y*relativeposition.y) >= distancecalc + 68:
+			position = target.position + Vector2(get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x), get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y)).rotated(randf_range(0, 2*PI))
+	else:
+		$TargetIndicator.visible = false
+		$TargetIndicator.stop()

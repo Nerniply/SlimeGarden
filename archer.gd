@@ -8,6 +8,7 @@ signal stateChanged(newState)
 var currState: int = archer.MOVE
 var inRange = false
 var relativeposition = Vector2()
+var distancecalc
 
 func _ready():
 	# Spawning distance - accounts for viewport size and camera zoom
@@ -72,8 +73,9 @@ func _on_tree_exiting():
 	get_parent().currarchers -= 1
 
 func _physics_process(delta):
+	distancecalc = sqrt((get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x))*(get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x))+(get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y))*(get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y)))
 	relativeposition = target.position - position
-	if sqrt(relativeposition.x*relativeposition.x+relativeposition.y*relativeposition.y) >= 750:
+	if sqrt(relativeposition.x*relativeposition.x+relativeposition.y*relativeposition.y) >= distancecalc + 45:
 		queue_free()
 	match currState:
 		archer.MOVE:

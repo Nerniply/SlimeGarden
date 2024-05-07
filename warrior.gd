@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var target = get_parent().get_node("Rosa")
-var spd = 205
+var spd = 190
 const hp = 1
 var relativeposition = Vector2()
 var distancecalc
@@ -76,7 +76,7 @@ func _on_tree_exiting():
 func _physics_process(delta):
 	distancecalc = sqrt((get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x))*(get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x))+(get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y))*(get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y)))
 	relativeposition = target.position - position
-	if sqrt(relativeposition.x*relativeposition.x+relativeposition.y*relativeposition.y) >= distancecalc + 30:
+	if sqrt(relativeposition.x*relativeposition.x+relativeposition.y*relativeposition.y) >= distancecalc + 45:
 		queue_free()
 	if relativeposition.x > 0:
 		$AnimatedSprite2D.flip_h = true

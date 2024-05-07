@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -7,13 +7,13 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	$CenterContainer/AnimatedSprite2D.play("default")
+func _process(delta):
+	pass
 
 
-func _on_start_pressed():
-	get_tree().change_scene_to_file("res://intro_scene.tscn")
+func _on_main_menu_pressed():
+	get_tree().change_scene_to_file("res://main.tscn")
+
 
 func _on_quit_pressed():
 	get_tree().quit()
-

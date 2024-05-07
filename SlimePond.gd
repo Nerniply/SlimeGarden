@@ -13,10 +13,14 @@ func poolentered(area: Area2D):
 	if area.get_parent() is Player:
 		colliding = true
 		healingcounter = 0
+	if area.is_in_group("Hitbox") and area.get_parent().is_in_group("Grounded"):
+		area.get_parent().spd *= 0.5
 
 func poolexited(area: Area2D):
 	if area.get_parent() is Player:
 		colliding = false
+	if area.is_in_group("Hitbox") and area.get_parent().is_in_group("Grounded"):
+		area.get_parent().spd *= 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

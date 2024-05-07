@@ -9,7 +9,7 @@
 script = ExtResource("1_qy0vc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("1_4bhcc")
 
 [node name="ExplosionRange" type="Area2D" parent="."]

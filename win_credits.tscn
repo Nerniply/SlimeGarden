@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3pefv148pcgv"]
+
+[ext_resource type="Script" path="res://win_credits.gd" id="1_s2ltg"]
+
+[node name="WinCredits" type="Node2D"]
+script = ExtResource("1_s2ltg")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 96.0
+offset_bottom = 93.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "You Won!"
+horizontal_alignment = 1
+
+[node name="MainMenu" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

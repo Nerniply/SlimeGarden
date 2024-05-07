@@ -1,5 +1,5 @@
 extends Node2D
-@onready var currState = 1
+@onready var currState = 0
 
 var ArrowsReady = true
 var ArrowEventTrigger = false
@@ -16,6 +16,11 @@ var currpyro = 0
 var maxpyro = 0
 var currknight = 0
 var maxknight = 0
+var dirtaquired = false
+var sunaquired = false
+var wateraquired = false
+var knightrespawntimer = 300
+
 
 
 #var enabledamount = 4
@@ -62,7 +67,6 @@ func setState(newState: int):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#$CanvasLayer/HealthHearts.updateMaxHP(10)
 	pass
 
 func _on_arrow_passage_area_entered(area):
@@ -86,6 +90,7 @@ func _on_knight_spawn_pressed():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	$CanvasLayer/HealthHearts.updateCurHP($Rosa.curhp)
+	$CanvasLayer/HealthHearts.addArmor($Rosa.curarmor)
 	#$CanvasLayer/healthtxt.text = str($Rosa.curhp)
 	#$CanvasLayer/healthbar.max_value = $Rosa.maxhp
 	#$CanvasLayer/healthbar.value = $Rosa.curhp
@@ -123,40 +128,47 @@ func _physics_process(delta):
 			PyroEventTimer = -1
 		PyroEventTimer += 1
 	
+	if knightrespawntimer < 300:
+		knightrespawntimer += 1
 	
 	#checks how many of each enemy exist and spawns one if there are less then maximum
 	if currwarriors < maxwarriors:
 		add_child(load("res://warrior.tscn").instantiate())
-	if currarchers < maxarchers:
+	if currarchers < maxarchers and dirtaquired:
 		add_child(load("res://archer.tscn").instantiate())
-	if currpyro < maxpyro:
+	if currpyro < maxpyro and sunaquired:
 		add_child(load("res://pyromancer.tscn").instantiate())
-	if currknight < maxknight:
+	if currknight < maxknight and wateraquired and knightrespawntimer == 300:
 		add_child(load("res://knight.tscn").instantiate())
 	
 	# controls the phase of the game (and how many enemies there are)
 	match currState:
-		1:
+		0:
 			maxwarriors = 3
-		2:
+		1:
 			maxwarriors = 4
 			maxarchers = 2
-		3:
+			maxpyro = 2
+			maxknight = 1
+		2:
 			maxwarriors = 6
 			maxarchers = 4
-			maxpyro = 2
-		4:
+			maxpyro = 4
+			maxknight = 1
+		3:
 			maxwarriors = 12
 			maxarchers = 8
-			maxpyro = 4
+			maxpyro = 8
 			maxknight = 1
 
 func _on_forest_trigger_area_entered(area):
 	if area.get_parent() is Player:
 		currState += 1
+		dirtaquired = true
 		ArrowEventTrigger = true
 		$Rosa.maxhp -= 5
 		$CanvasLayer/HealthHearts.updateMaxHP($Rosa.maxhp)
+		$CanvasLayer/Control/VBoxContainer/ForestCheckbox.button_pressed = true
 		$Forest.queue_free()
 		$Walls/Forest/StaticBody2D/TempTreeWall.queue_free()
 		$Dirt.queue_free()
@@ -164,12 +176,14 @@ func _on_forest_trigger_area_entered(area):
 func _on_cave_trigger_area_entered(area):
 	if area.get_parent() is Player:
 		currState += 1
+		sunaquired = true
 		add_child(load("res://pyro_event.tscn").instantiate())
 		add_child(load("res://pyro_event.tscn").instantiate())
 		add_child(load("res://pyro_event.tscn").instantiate())
 		PyroEventTimer = true
 		$Rosa.maxhp -= 5
 		$CanvasLayer/HealthHearts.updateMaxHP($Rosa.maxhp)
+		$CanvasLayer/Control/VBoxContainer/CaveCheckbox.button_pressed = true
 		$Walls/TempCaveBridge.queue_free()
 		$SunStone.queue_free()
 		$ExitBridge.show()
@@ -177,6 +191,26 @@ func _on_cave_trigger_area_entered(area):
 func _on_area_2d_area_entered(area):
 	if area.get_parent() is Player:
 		currState += 1
+		wateraquired = true
 		$Rosa.maxhp -= 5
 		$CanvasLayer/HealthHearts.updateMaxHP($Rosa.maxhp)
+		$CanvasLayer/Control/VBoxContainer/MarshCheckbox.button_pressed = true
 		$Water.queue_free()
+
+func _on_noclip_toggled(toggled_on):
+	if toggled_on:
+		$Rosa/CollisionShape2D.set_deferred("disabled", true)
+		$Rosa/Hitbox/CollisionShape2D.set_deferred("disabled", true)
+	else:
+		$Rosa/CollisionShape2D.set_deferred("disabled", false)
+		$Rosa/Hitbox/CollisionShape2D.set_deferred("disabled", false)
+
+func _on_godmode_toggled(toggled_on):
+	if toggled_on:
+		$Rosa.god = true
+	else: $Rosa.god = false
+
+
+func _on_win_area_area_entered(area):
+	if area.get_parent() is Player and currState == 3:
+		get_tree().change_scene_to_file("res://win_credits.tscn")

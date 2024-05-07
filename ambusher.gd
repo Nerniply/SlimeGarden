@@ -6,7 +6,8 @@ var hp = 1
 var relativeposition = Vector2()
 
 func _ready():
-	pass
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+	$CollisionShape2D.set_deferred("disabled", true)
 
 func gethp():
 	return hp
@@ -19,8 +20,10 @@ func playercollide(area: Area2D):
 func _physics_process(delta):
 	#self.target = get_parent().target
 	if get_parent().triggered:
-		spd = 205
+		spd = 190
 		self.show()
+		$Hitbox/CollisionShape2D.set_deferred("disabled", false)
+		$CollisionShape2D.set_deferred("disabled", false)
 	relativeposition = target.position - global_position
 	if relativeposition.x > 0:
 		$AnimatedSprite2D.flip_h = true

@@ -50,7 +50,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7fa8a")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -69,4 +69,5 @@ shape = SubResource("CircleShape2D_rj3xg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(5, -43)
 sprite_frames = SubResource("SpriteFrames_sg6ob")
-frame_progress = 0.313678
+frame = 5
+frame_progress = 1.0

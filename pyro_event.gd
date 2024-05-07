@@ -9,7 +9,7 @@ func _ready():
 	self.position = player.position + Vector2(randi_range(-screenview.x,screenview.x),randi_range(-screenview.y,screenview.y))
 	#self.position = Vector2(player.position.x + randi_range(-640,640), player.position.y + randi_range(-360, 360))
 	explosion.position = self.position
-	explosion.size = 5
+	explosion.size = $Sprite2D.scale.x
 #	explosion.rotated(randf_range(0, 2*PI))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

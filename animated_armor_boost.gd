@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
-class_name SpeedBoost
+class_name ArmorBoost
 
-var cooldowntimer = 18000
+var cooldowntimer = 2700
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -12,12 +12,13 @@ func collide(area: Area2D):
 		$Area2D/CollisionShape2D.set_deferred("disabled", true)
 		cooldowntimer = 0
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _process(delta):
 	play("default")
-	if cooldowntimer < 18000:
+	if cooldowntimer < 2700:
 		cooldowntimer += 1
-		if cooldowntimer == 18000:
+		if cooldowntimer == 2700:
 			self.show()
 			$Area2D/CollisionShape2D.set_deferred("disabled", false)
 	else: pass
