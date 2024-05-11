@@ -50,7 +50,7 @@ func collide(area: Area2D):
 		if (area.get_parent() is FullHeal):
 			hpregen = true
 			hpregentimer = 0
-		if (area.get_parent() is SpeedBoost):
+		if (area.get_parent() is SpeedBoost)  and spdup == false:
 			spdup = true
 			spduptimer = 0
 			spd *= 2
@@ -90,8 +90,12 @@ func _physics_process(delta):
 		curhp = maxhp
 	
 	if spdup and spduptimer < 180:
+		$Running.play("speed")
+		$Running.show()
 		spduptimer += 1
 		if spduptimer == 180:
+			$Running.hide()
+			$Running.stop()
 			spd /= 2
 	else: spdup = false
 	
@@ -126,23 +130,33 @@ func _physics_process(delta):
 		velocity = input.normalized()*spd
 		move_and_slide()
 		if velocity.x > 0:
+			#$Running.flip_h = true # right
 			$AnimatedSprite2D.flip_h = true # right
+			$Running.flip_h = true # right
 			$AnimatedSprite2D.play("move_L")
 			direction = "R"
 		elif velocity.x < 0:
+			#$Running.flip_h = false # left
 			$AnimatedSprite2D.flip_h = false # left
+			$Running.flip_h = false # left
 			$AnimatedSprite2D.play("move_L")
 			direction = "L"
 		if velocity.x == 0:
 			if velocity.y > 0:
 				if direction == "R":
 					$AnimatedSprite2D.flip_h = true # right
-				else: $AnimatedSprite2D.flip_h = false # left
+					$Running.flip_h = true # right
+				else:
+					$AnimatedSprite2D.flip_h = false # left
+					$Running.flip_h = false # left
 				$AnimatedSprite2D.play("move_L")
 			if velocity.y < 0:
 				if direction == "L":
 					$AnimatedSprite2D.flip_h = false # left
-				else: $AnimatedSprite2D.flip_h = true # right
+					$Running.flip_h = false # left
+				else:
+					$AnimatedSprite2D.flip_h = true # right
+					$Running.flip_h = true # right
 				$AnimatedSprite2D.play("move_L")
 			if velocity.y == 0:
 				$AnimatedSprite2D.play("idle")

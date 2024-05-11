@@ -7,7 +7,7 @@ class_name Health
 @onready var lifetimer = 0
 @onready var ejecttimer = 0
 var spd = 50
-var ejectspd = 250
+var ejectspd = 200
 var relativeposition = Vector2()
 
 # Called when the node enters the scene tree for the first time.
@@ -40,10 +40,16 @@ func _physics_process(delta):
 		#$AnimatedSprite2D.play(animation)
 		
 	if !isactive:
-		$AnimatedSprite2D.play("idle_L")
+		$AnimatedSprite2D.play("spawn")
+		if relativeposition.x > 0:
+			$AnimatedSprite2D.flip_h = true
+		if relativeposition.x < 0:
+			$AnimatedSprite2D.flip_h = false
 		velocity = position.direction_to(ejecttoward) * ejectspd
 		ejecttimer += 1
-		if ejecttimer == 30:
+		if ejecttimer == 24:
+			ejectspd = 0
+		if ejecttimer == 54:
 			isactive = true
 	else:
 		$AnimatedSprite2D.play("move_L")

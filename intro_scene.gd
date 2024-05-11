@@ -34,6 +34,9 @@ func _physics_process(delta):
 		animatewarrior = "move_L"
 	if timer == 500:
 		$WarriorPanel2.visible = false
+	if timer == 510:
+		$Path2D2/PathFollow2D/BabyPuppet.flip_h = true
+		animatebaby = "spawn"
 	if timer == 505:
 		$RosaPuppet.modulate = Color(1, 0, 0)
 	if timer == 515:
@@ -41,6 +44,7 @@ func _physics_process(delta):
 	if timer == 564:
 		$RosaPuppet.flip_h = true
 	if timer == 570:
+		$Path2D2/PathFollow2D/BabyPuppet.flip_h = false
 		animatebaby = "move_L"
 	if timer == 660:
 		animatebaby = "idle"

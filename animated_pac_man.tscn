@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dutsim3seyf3m"]
+[gd_scene load_steps=24 format=3 uid="uid://dutsim3seyf3m"]
 
 [ext_resource type="Texture2D" uid="uid://dlj6220de66w1" path="res://Assets/Pacmany-Fruity-Sheet.png" id="1_esol1"]
+[ext_resource type="Texture2D" uid="uid://bs3mgn7bhhtfn" path="res://Assets/PacMan-XFX-Sheet.png" id="2_8814r"]
 [ext_resource type="Script" path="res://animated_pac_man.gd" id="2_k4nkn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vd5uy"]
@@ -31,6 +32,50 @@ region = Rect2(210, 0, 42, 56)
 atlas = ExtResource("1_esol1")
 region = Rect2(252, 0, 42, 56)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aixy5"]
+atlas = ExtResource("2_8814r")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53wxl"]
+atlas = ExtResource("2_8814r")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klc47"]
+atlas = ExtResource("2_8814r")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o63k3"]
+atlas = ExtResource("2_8814r")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxucf"]
+atlas = ExtResource("2_8814r")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w0b5"]
+atlas = ExtResource("2_8814r")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgkxv"]
+atlas = ExtResource("2_8814r")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ds77"]
+atlas = ExtResource("2_8814r")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b0s7"]
+atlas = ExtResource("2_8814r")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34fkb"]
+atlas = ExtResource("2_8814r")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v85yk"]
+atlas = ExtResource("2_8814r")
+region = Rect2(480, 0, 48, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_n2fr5"]
 animations = [{
 "frames": [{
@@ -58,12 +103,51 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aixy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53wxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klc47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o63k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxucf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w0b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgkxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ds77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b0s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34fkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v85yk")
+}],
+"loop": false,
+"name": &"pickup",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epmpe"]
 
 [node name="AnimatedPacMan" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_n2fr5")
+animation = &"pickup"
 script = ExtResource("2_k4nkn")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Hitbox"]]

@@ -40,9 +40,9 @@ func updateMaxHP(maxhp: int):
 	for i in range(maxhp, heartlist.size()):
 		heartlist[i].erase(true)
 
-func addArmor(armor: int):
+func addArmor(armor: int, maxHP: int):
 	var heartlist = $Row1.get_children() + $Row2.get_children()
-	for i in range(heartlist.size()-armor):
+	for i in range(heartlist.size()-(heartlist.size()-maxHP)-armor):
 		heartlist[i].armor(false)
-	for i in range(heartlist.size()-armor,heartlist.size()):
+	for i in range(heartlist.size()-(heartlist.size()-maxHP)-armor,heartlist.size()-(heartlist.size()-maxHP)):
 		heartlist[i].armor(true)

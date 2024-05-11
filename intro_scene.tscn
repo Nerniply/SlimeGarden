@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cowi061mejkoh"]
+[gd_scene load_steps=56 format=3 uid="uid://cowi061mejkoh"]
 
 [ext_resource type="Script" path="res://intro_scene.gd" id="1_kb5mf"]
 [ext_resource type="Texture2D" uid="uid://bndmtdk8i4d1h" path="res://Assets/Overworldv4.png" id="2_gyj1h"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqiok02bkpebb" path="res://Assets/Enemies/Slime Garden Pixel Arts-Idle.png" id="4_sd0o2"]
 [ext_resource type="Texture2D" uid="uid://dhakae0le0pu4" path="res://Assets/Enemies/Slime Garden Pixel Arts-Warrior Idle.png" id="5_38kik"]
 [ext_resource type="Texture2D" uid="uid://cnb3f8re70lae" path="res://Assets/Healing Slime Idle + Hopping.png" id="5_vxrjr"]
+[ext_resource type="Texture2D" uid="uid://b666hs52hw1mp" path="res://Assets/Damage-Sheet - Copy-Sheet.png" id="6_5ea54"]
 [ext_resource type="Texture2D" uid="uid://c0n4osuvsp6si" path="res://Assets/Enemies/Slime Garden Pixel Arts-Warrior Moving.png" id="6_48b08"]
 [ext_resource type="Texture2D" uid="uid://cj22rx1taohjy" path="res://Assets/Slime Garden Pixel Arts-Healing.png" id="8_7bfgf"]
 
@@ -72,9 +73,9 @@ animations = [{
 
 [sub_resource type="Curve2D" id="Curve2D_34uk6"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -728, 36.75, 0.25, -36.75, -0.25, -64, -744, 0, 0, 0, 0, -128, -728, 0, 0, 0, 0, 0, -728)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -728, 0, 0, 0, 0, -128, -728, 0, 0, 0, 0, 0, -728)
 }
-point_count = 4
+point_count = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fae7"]
 atlas = ExtResource("5_vxrjr")
@@ -107,6 +108,42 @@ region = Rect2(200, 0, 50, 50)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wrawq"]
 atlas = ExtResource("5_vxrjr")
 region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woyvm"]
+atlas = ExtResource("6_5ea54")
+region = Rect2(0, 0, 90, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q18tm"]
+atlas = ExtResource("6_5ea54")
+region = Rect2(90, 0, 90, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0pkx"]
+atlas = ExtResource("6_5ea54")
+region = Rect2(180, 0, 90, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wocwp"]
+atlas = ExtResource("6_5ea54")
+region = Rect2(270, 0, 90, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptxdv"]
+atlas = ExtResource("6_5ea54")
+region = Rect2(360, 0, 90, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmwyl"]
+atlas = ExtResource("6_5ea54")
+region = Rect2(450, 0, 90, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2lyg"]
+atlas = ExtResource("6_5ea54")
+region = Rect2(540, 0, 90, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ocds"]
+atlas = ExtResource("6_5ea54")
+region = Rect2(630, 0, 90, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmdxf"]
+atlas = ExtResource("6_5ea54")
+region = Rect2(720, 0, 90, 69)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ykjrb"]
 animations = [{
@@ -148,6 +185,38 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_woyvm")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_q18tm")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_h0pkx")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_wocwp")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ptxdv")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_xmwyl")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_f2lyg")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_5ocds")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_fmdxf")
+}],
+"loop": true,
+"name": &"spawn",
 "speed": 5.0
 }]
 
@@ -384,8 +453,7 @@ loop = false
 [node name="BabyPuppet" type="AnimatedSprite2D" parent="Path2D2/PathFollow2D"]
 position = Vector2(-1, -4)
 sprite_frames = SubResource("SpriteFrames_ykjrb")
-animation = &"idle"
-frame_progress = 0.818917
+animation = &"spawn"
 
 [node name="RosaPuppet" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -728)

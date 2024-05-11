@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://csmj3pq3yqc4r"]
+[gd_scene load_steps=20 format=3 uid="uid://csmj3pq3yqc4r"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ifndq"]
 [ext_resource type="Texture2D" uid="uid://d2ln5gtfbed0g" path="res://Assets/Title Screen v2-Sheet.png" id="3_a44xk"]
+[ext_resource type="AudioStream" uid="uid://dwqivh4dllwib" path="res://Assets/Title Test.mp3" id="3_bmw5f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4g0ir"]
 atlas = ExtResource("3_a44xk")
@@ -157,6 +158,13 @@ text = "START"
 layout_mode = 2
 theme_override_font_sizes/font_size = 44
 text = "QUIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bmw5f")
+volume_db = -4.0
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="pressed" from="BoxContainer/START" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="BoxContainer/QUIT" to="." method="_on_quit_pressed"]

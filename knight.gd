@@ -22,6 +22,7 @@ func _ready():
 enum knight {
 	WINDUP,
 	CHARGE,
+	SLASH,
 	STUN,
 }
 
@@ -34,9 +35,9 @@ func setState(newState: int):
 func gethp():
 	return hp
 
-func _on_VisibilityNotifier2D_screen_exited():
-	if currState == knight.CHARGE:
-		setState(knight.STUN)
+#func _on_VisibilityNotifier2D_screen_exited():
+	#if currState == knight.CHARGE:
+		#setState(knight.STUN)
 
 func collide(area: Area2D):
 	#if area.is_in_group("SlowTrigger"):
@@ -44,7 +45,8 @@ func collide(area: Area2D):
 	if currState == knight.CHARGE:
 		if area.get_parent().is_in_group("Wall"):
 			setState(knight.STUN)
-	else:
+			timervar = 0
+	elif currState == knight.STUN:
 		if area.get_parent() is Player:
 			queue_free()
 
@@ -65,7 +67,7 @@ func _physics_process(delta):
 	
 	match currState:
 		knight.WINDUP:
-			hp = 5
+			hp = 0
 			chargespd = 0 # spd = 0
 			targetPosition = target.position
 			startposition = self.position
@@ -81,7 +83,18 @@ func _physics_process(delta):
 			animation = "charge_L3"
 			velocity = startposition.direction_to(targetPosition) * chargespd # spd
 			move_and_slide()
-			
+			if timervar == 60: # ~1.5 sec
+				setState(knight.SLASH)
+				timervar = -1
+			timervar += 1
+		knight.SLASH:
+			hp = 5
+			chargespd = 0
+			animation = "slash_L"
+			if timervar == 30: # ~0.5 sec
+				setState(knight.WINDUP)
+				timervar = -1
+			timervar += 1
 		knight.STUN:
 			hp = 0
 			if timervar < 10:
@@ -99,11 +112,18 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = true # right
 	else: $AnimatedSprite2D.flip_h = false # left
 	$AnimatedSprite2D.play(animation)
+	
+	$Stun.play("default")
+	if currState == knight.STUN:
+		$Stun.show()
+	else: $Stun.hide()
 
 func _on_state_changed(newState):
 	if newState == knight.WINDUP:
 		$TargetIndicator.visible = true
 		$TargetIndicator.play("default")
+		targetPosition = target.position
+		startposition = self.position
 		relativeposition = targetPosition - startposition
 		distancecalc = sqrt((get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x))*(get_viewport().size.x/(2*target.get_node("PlayerCam").get_zoom().x))+(get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y))*(get_viewport().size.y/(2*target.get_node("PlayerCam").get_zoom().y)))
 		if sqrt(relativeposition.x*relativeposition.x+relativeposition.y*relativeposition.y) >= distancecalc + 68:

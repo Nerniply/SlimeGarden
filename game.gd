@@ -90,7 +90,7 @@ func _on_knight_spawn_pressed():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	$CanvasLayer/HealthHearts.updateCurHP($Rosa.curhp)
-	$CanvasLayer/HealthHearts.addArmor($Rosa.curarmor)
+	$CanvasLayer/HealthHearts.addArmor($Rosa.curarmor, $Rosa.maxhp)
 	#$CanvasLayer/healthtxt.text = str($Rosa.curhp)
 	#$CanvasLayer/healthbar.max_value = $Rosa.maxhp
 	#$CanvasLayer/healthbar.value = $Rosa.curhp
@@ -160,6 +160,7 @@ func _physics_process(delta):
 			maxarchers = 8
 			maxpyro = 8
 			maxknight = 1
+			$WinArea.show()
 
 func _on_forest_trigger_area_entered(area):
 	if area.get_parent() is Player:

@@ -51,12 +51,18 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wb3fh"]
 
 [node name="AnimatedSpeedBoost" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_7ftp5")
+animation = &"new_animation"
 script = ExtResource("1_52b2m")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Hitbox"]]

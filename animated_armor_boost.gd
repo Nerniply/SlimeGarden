@@ -11,10 +11,11 @@ func collide(area: Area2D):
 		self.hide()
 		$Area2D/CollisionShape2D.set_deferred("disabled", true)
 		cooldowntimer = 0
+		$AudioStreamPlayer
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	play("default")
 	if cooldowntimer < 2700:
 		cooldowntimer += 1

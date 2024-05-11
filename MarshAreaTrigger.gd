@@ -18,9 +18,9 @@ func _on_area_entered(area):
 		Music.play()
 		Fading.play("FadeIn")
 		area.get_parent().get_node("PlayerCam").set_zoom(Vector2(2,2))
-		area.get_parent().get_node("PlayerCam").set_limit(SIDE_LEFT,-2723)
+		area.get_parent().get_node("PlayerCam").set_limit(SIDE_LEFT,-2560)
 		area.get_parent().get_node("PlayerCam").set_limit(SIDE_TOP,-1880)
-		area.get_parent().get_node("PlayerCam").set_limit(SIDE_RIGHT,-1443)
+		area.get_parent().get_node("PlayerCam").set_limit(SIDE_RIGHT,-1279)
 		area.get_parent().get_node("PlayerCam").set_limit(SIDE_BOTTOM,-1080)
 	if area.is_in_group("Hitbox") and area.get_parent().is_in_group("Grounded"):
 		area.get_parent().spd *= 0.5

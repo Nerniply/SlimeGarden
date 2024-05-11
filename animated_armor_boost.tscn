@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmiwpbmgtcy80"]
+[gd_scene load_steps=10 format=3 uid="uid://cmiwpbmgtcy80"]
 
 [ext_resource type="Texture2D" uid="uid://de1vjg6rxadad" path="res://Assets/Blueberry Armor-Sheet.png" id="1_makod"]
 [ext_resource type="Script" path="res://animated_armor_boost.gd" id="2_60mvp"]
+[ext_resource type="AudioStream" uid="uid://d0c4826ft1omp" path="res://Assets/Item 1.mp3" id="3_040aj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vv3c7"]
 atlas = ExtResource("1_makod")
@@ -52,5 +53,8 @@ collision_mask = 17
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_6ep26")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_040aj")
 
 [connection signal="area_entered" from="Area2D" to="." method="collide"]
